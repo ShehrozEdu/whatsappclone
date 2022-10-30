@@ -33,3 +33,34 @@ body {
   height: 15rem;
   width: 15rem;
 }
+
+.play-btn {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 10;
+  right: 0;
+  z-index: 1000 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: gray !important;
+  height: 5rem;
+  width: 5rem;
+  /* border-radius: 50%; */
+}
+.pause-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  overflow: hidden;
+}
+
+.btn-main-play {
+  display: inline-block;
+  margin-left: 5px;
+  vertical-align: top;
+}

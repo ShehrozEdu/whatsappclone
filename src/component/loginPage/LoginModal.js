@@ -48,12 +48,31 @@ export default function LoginModal() {
                       onError={() => {
                         alert("Login Failed");
                       }}
+                      shape="pill"
+                      width="240"
                     />
                   </div>
                 </div>
               </div>
             </div>
-            <div className="bg-light p-5">
+            <div className="bg-light p-5 position-relative d-flex justify-content-center ">
+              {/* <button class="  play-btn">
+                <div class="pause-btn">
+                  <div class="btn-main-play">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="28"
+                      height="34"
+                      viewBox="0 0 28 34"
+                    >
+                      <path
+                        fill="#FFF"
+                        d="M1 4.983v24.034a2.982 2.982 0 0 0 4.564 2.53L24.792 19.53a2.981 2.981 0 0 0 0-5.058L5.563 2.454A2.983 2.983 0 0 0 1 4.983z"
+                      ></path>
+                    </svg>
+                  </div>
+                </div>
+              </button> */}
               <div className="d-flex justify-content-center">
                 <img src="./assets/login-image.png" alt="pics" />
               </div>
@@ -61,7 +80,6 @@ export default function LoginModal() {
           </div>
         </section>
       </GoogleOAuthProvider>
-      ;
     </>
   );
 }
