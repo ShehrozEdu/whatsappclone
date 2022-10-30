@@ -35,20 +35,15 @@ body {
 }
 
 .play-btn {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 10;
-  right: 0;
-  z-index: 1000 !important;
   display: flex;
+  margin-top: 6rem;
   align-items: center;
   justify-content: center;
-
-  background-color: gray !important;
+  background-color: rgba(128, 128, 128, 0.418) !important;
+  border: 2px solid white;
   height: 5rem;
   width: 5rem;
-  /* border-radius: 50%; */
+  border-radius: 50%;
 }
 .pause-btn {
   display: flex;
@@ -60,7 +55,35 @@ body {
 }
 
 .btn-main-play {
-  display: inline-block;
-  margin-left: 5px;
-  vertical-align: top;
+  position: absolute;
+}
+
+/* =====> home page <====== */
+.dp {
+  height: 3rem;
+  width: 3rem;
+  border-radius: 50%;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  height: 85vh;
+}
+
+.contact-list {
+  height: 100vh;
+}
+
+.search-icon {
+  margin-left: 0.8rem;
+  margin-top: 0.7rem;
+}
+.chat-default-container {
+  margin-top: 10rem;
+}
+.homePage-image {
+  margin-left: 15rem;
+  height: 40rem;
+  width: 40rem;
 }

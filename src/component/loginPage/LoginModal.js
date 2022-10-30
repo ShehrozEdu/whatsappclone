@@ -55,8 +55,10 @@ export default function LoginModal() {
                 </div>
               </div>
             </div>
+
             <div className="bg-light p-5 position-relative d-flex justify-content-center ">
-              {/* <button class="  play-btn">
+              {/* == btn == */}
+              <button class="play-btn position-absolute">
                 <div class="pause-btn">
                   <div class="btn-main-play">
                     <svg
@@ -72,7 +74,7 @@ export default function LoginModal() {
                     </svg>
                   </div>
                 </div>
-              </button> */}
+              </button>
               <div className="d-flex justify-content-center">
                 <img src="./assets/login-image.png" alt="pics" />
               </div>
