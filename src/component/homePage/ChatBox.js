@@ -2,8 +2,8 @@ import React from "react";
 
 export default function ChatBox() {
   return (
-    <div className="col-12 d-flex ">
-      <div className="d-flex p-2">
+    <div className="col-12 ">
+      <div className="d-flex align-items-center p-2">
         <div className="ms-3">
           <img
             src="https://source.unsplash.com/random"
@@ -11,20 +11,36 @@ export default function ChatBox() {
             className="dp cursor-pointer"
           />
         </div>
-        <div className="d-flex flex-column ms-4 w-75 ">
-          <span className="fw-bold m-0">Legend Black</span>
-          <span className="text-muted small ">
-            {` Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates,
-            atque veritatis quasi ut nisi incidunt, possimus odio odit, pariatur
-            quos placeat eum impedit sunt doloremque non officia quam. Maxime,
-            ullam.`.substring(0, 80)}
-          </span>
+        <div className="d-flex align-items-center col-12">
+          <div className="d-flex flex-column ms-4 ">
+            <div className="fw-bold m-0">Legend Black</div>
+            <div className="text-muted small text-nowrap overflow-hidden">
+              adipisicing elit. Voluptates, atque vecscscscscscritatis quasi ut
+              nisi incidunt, possimus odio odit, pariatur quos lore Lorem ipsum
+            </div>
+          </div>
+          <div className="position-absolute bg-light end-0 p-3 ">
+            <i className="fa-solid fs-5 mx-3 fa-magnifying-glass text-muted "></i>
+            <i className="fa-solid fs-5 mx-3 cursor-pointer text-muted fa-ellipsis-vertical"></i>
+          </div>
         </div>
-        <div>
-          <i className="fa-solid fa-magnifying-glass text-muted "></i>
-        </div>
-        <div>
-          <i className="fa-solid  cursor-pointer text-muted fa-ellipsis-vertical"></i>
+      </div>
+      <div className="chat-box-wallpaper">
+        <div className="bg-light position-fixed justify-content-around p-2 d-flex align-items-center chat-index bottom-0 col-9">
+          <div>
+            <i class="fa-regular fs-4 text-muted fa-face-smile"></i>
+            <i class="fa-solid fs-4 text-muted ms-4 fa-paperclip"></i>
+          </div>
+          <div className="w-75">
+            <input
+              type="text"
+              className="form-control ps-5"
+              placeholder="Search or start a new chat"
+            />
+          </div>
+          <div>
+            <i class="fa-solid fs-4 text-muted fa-microphone"></i>
+          </div>
         </div>
       </div>
     </div>

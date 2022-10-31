@@ -90,3 +90,14 @@ ul {
   height: 40rem;
   width: 40rem;
 }
+
+.chat-box-wallpaper {
+  background-image: url("https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png");
+  background-position: center;
+  background-size: contain;
+  height: 100vh;
+  width: 100vw;
+}
+.chat-index {
+  /* bottom: -5rem !important; */
+}

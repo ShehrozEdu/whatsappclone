@@ -1,17 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Scrollbars } from "react-custom-scrollbars-2";
+import jwt_decode from "jwt-decode";
 
 export default function ContactList() {
+  let [user, setUser] = useState("");
+  useEffect(() => {
+    let userInfo = sessionStorage.getItem("auth");
+    if (userInfo) {
+      let decode = jwt_decode(userInfo);
+      setUser(decode);
+    }
+  }, []);
   return (
     <>
       <div className="p-2 border bg-light">
         <div className="d-flex justify-content-between ">
           <div>
-            <img
-              src="https://source.unsplash.com/random"
-              alt=""
-              className="dp cursor-pointer"
-            />
+            <img src={user.picture} alt="" className="dp cursor-pointer" />
           </div>
           <div className="d-flex justify-content-evenly w-50 align-items-center">
             <div className="pb-1">

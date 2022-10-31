@@ -47,10 +47,11 @@ export default function LoginModal() {
                   <div>
                     <GoogleLogin
                       onSuccess={(credentialResponse) => {
-                        localStorage.setItem(
+                        sessionStorage.setItem(
                           "auth",
                           credentialResponse.credential
                         );
+                        window.location.reload();
                       }}
                       onError={() => {
                         alert("Login Failed");
