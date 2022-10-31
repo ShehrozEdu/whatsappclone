@@ -13,6 +13,9 @@ body {
 .theme-green {
   background-color: #00a884;
 }
+.cursor-pointer {
+  cursor: pointer;
+}
 /* ====> login <==== */
 
 .login-page-main {

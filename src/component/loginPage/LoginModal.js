@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import { GoogleLogin } from "@react-oauth/google";
 
 export default function LoginModal() {
+  const [play, setPlay] = useState(true);
+  const ref = useRef(null);
+  const handlePlayVideo = () => {
+    setPlay(false);
+    ref.current.play();
+  };
+
   return (
     <>
       <GoogleOAuthProvider clientId="503786222553-dra9mrnlh03ehjr29rrkdraqtpld4e9m.apps.googleusercontent.com">
@@ -58,25 +65,40 @@ export default function LoginModal() {
 
             <div className="bg-light p-5 position-relative d-flex justify-content-center ">
               {/* == btn == */}
-              <button class="play-btn position-absolute">
-                <div class="pause-btn">
-                  <div class="btn-main-play">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="28"
-                      height="34"
-                      viewBox="0 0 28 34"
-                    >
-                      <path
-                        fill="#FFF"
-                        d="M1 4.983v24.034a2.982 2.982 0 0 0 4.564 2.53L24.792 19.53a2.981 2.981 0 0 0 0-5.058L5.563 2.454A2.983 2.983 0 0 0 1 4.983z"
-                      ></path>
-                    </svg>
+              {play ? (
+                <button
+                  class="play-btn position-absolute "
+                  onClick={handlePlayVideo}
+                >
+                  <div class="pause-btn">
+                    <div class="btn-main-play">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="28"
+                        height="34"
+                        viewBox="0 0 28 34"
+                      >
+                        <path
+                          fill="#FFF"
+                          d="M1 4.983v24.034a2.982 2.982 0 0 0 4.564 2.53L24.792 19.53a2.981 2.981 0 0 0 0-5.058L5.563 2.454A2.983 2.983 0 0 0 1 4.983z"
+                        ></path>
+                      </svg>
+                    </div>
                   </div>
-                </div>
-              </button>
+                </button>
+              ) : null}
               <div className="d-flex justify-content-center">
-                <img src="./assets/login-image.png" alt="pics" />
+                {play ? (
+                  <img src="./assets/login-image.png" alt="whatsapp" />
+                ) : (
+                  <video ref={ref} controls autoplay>
+                    <source
+                      src="/assets/video/video1.mp4"
+                      autoplay
+                      type="video/mp4"
+                    />
+                  </video>
+                )}
               </div>
             </div>
           </div>

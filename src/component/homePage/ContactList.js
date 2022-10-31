@@ -10,7 +10,7 @@ export default function ContactList() {
             <img
               src="https://source.unsplash.com/random"
               alt=""
-              className="dp"
+              className="dp cursor-pointer"
             />
           </div>
           <div className="d-flex justify-content-evenly w-50 align-items-center">
@@ -20,7 +20,7 @@ export default function ContactList() {
                 height="24"
                 width="24"
                 preserveAspectRatio="xMidYMid meet"
-                class=""
+                className="cursor-pointer"
                 version="1.1"
                 id="df9d3429-f0ef-48b5-b5eb-f9d27b2deba6"
                 x="0px"
@@ -39,16 +39,16 @@ export default function ContactList() {
               </svg>
             </div>
             <div>
-              <i class="fa-regular fs-5 fa-message"></i>
+              <i className="fa-regular cursor-pointer fs-5 fa-message"></i>
             </div>
             <div>
-              <i class="fa-solid fs-5 fa-ellipsis-vertical"></i>
+              <i className="fa-solid fs-5 cursor-pointer  fa-ellipsis-vertical"></i>
             </div>
           </div>
         </div>
       </div>
       <div className="border-bottom px-2 py-1">
-        <i class="fa-solid fa-magnifying-glass search-icon text-muted position-absolute"></i>
+        <i className="fa-solid fa-magnifying-glass search-icon text-muted position-absolute"></i>
         <input
           type="text"
           className="form-control ps-5"
