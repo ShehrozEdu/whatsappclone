@@ -26,7 +26,7 @@ export default function ChatBox() {
         </div>
       </div>
       <div className="chat-box-wallpaper">
-        <div className="bg-light position-fixed justify-content-around p-2 d-flex align-items-center chat-index bottom-0 col-9">
+        <div className="bg-light position-fixed justify-content-around p-2 d-flex align-items-center chat-bar">
           <div>
             <i class="fa-regular fs-4 text-muted fa-face-smile"></i>
             <i class="fa-solid fs-4 text-muted ms-4 fa-paperclip"></i>
@@ -39,7 +39,7 @@ export default function ChatBox() {
             />
           </div>
           <div>
-            <i class="fa-solid fs-4 text-muted fa-microphone"></i>
+            <i class="fa-solid fs-4 text-muted fa-microphone me-4"></i>
           </div>
         </div>
       </div>

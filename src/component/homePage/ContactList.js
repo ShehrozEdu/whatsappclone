@@ -52,7 +52,7 @@ export default function ContactList() {
           </div>
         </div>
       </div>
-      <div className="border-bottom px-2 py-1">
+      <div className="border-bottom bg-white px-2 py-1">
         <i className="fa-solid fa-magnifying-glass search-icon text-muted position-absolute"></i>
         <input
           type="text"
