@@ -44,6 +44,8 @@ export default function ChatBox() {
         </div>
       </div>
     </div>
+
+    //ON CLICK.
     // <div className="col-12 d-flex align-items-center justify-content-center">
     //   <div className="col-5 chat-default-container d-flex align-items-center flex-column">
     //     <span

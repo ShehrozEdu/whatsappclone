@@ -110,3 +110,19 @@ ul {
 .homepage {
   width: 97% !important;
 }
+
+.mainHomePage {
+  height: 95vh !important ;
+}
+.homepage {
+  width: 97% !important;
+}
+.profile-pic {
+  height: 11rem;
+  width: 11rem;
+  border-radius: 5.5rem;
+}
+
+.theme-green-dark {
+  background-color: #008069;
+}

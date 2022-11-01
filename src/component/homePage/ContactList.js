@@ -20,7 +20,64 @@ export default function ContactList() {
       <div className="p-2 border bg-light">
         <div className="d-flex justify-content-between ">
           <div>
-            <img src={user.picture} alt="" className="dp cursor-pointer" />
+            <img
+              src={user.picture}
+              alt=""
+              className="dp cursor-pointer"
+              type="button"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#offcanvasScrolling"
+              aria-controls="offcanvasScrolling"
+            />
+          </div>
+
+          <div
+            className="offcanvas offcanvas-start bg-light"
+            data-bs-scroll="true"
+            data-bs-backdrop="false"
+            tabindex="-1"
+            id="offcanvasScrolling"
+            aria-labelledby="offcanvasScrollingLabel"
+          >
+            <div className="py-5 pb-3 theme-green-dark text-white d-flex align-items-center">
+              <div
+                type="button"
+                data-bs-dismiss="offcanvas"
+                className="ms-4"
+                aria-label="Close"
+              >
+                <i class="fa fa-arrow-left fs-5 mt-1" aria-hidden="true"></i>
+              </div>
+              <div className="text-white ms-4 fs-5 fw-bold">Profile</div>
+            </div>
+
+            <div className="bg-light  py-5 d-flex justify-content-center">
+              <div>
+                <img src={user.picture} alt="" className="profile-pic" />
+              </div>
+            </div>
+            <div className="bg-white p-2 shadow">
+              <p className="text-success small  ms-3">Your Name</p>
+              <div className="d-flex justify-content-between align-items-center">
+                <p className=" ms-3">{user.name}</p>
+                <i class="fa-solid fa-pen me-2 text-muted"></i>
+              </div>
+            </div>
+
+            <div className="d-flex p-2 justify-content-center">
+              <p className=" text-muted small mt-3 mx-1">
+                This is not your username or pin. This name will be visible to
+                your WhatsApp contacts.
+              </p>
+            </div>
+
+            <div className="bg-white p-2 shadow">
+              <p className="text-success small  ms-3">About</p>
+              <div className="d-flex justify-content-between align-items-center">
+                <p className=" ms-3">Status....</p>
+                <i class="fa-solid fa-pen me-2 text-muted"></i>
+              </div>
+            </div>
           </div>
           <div className="d-flex justify-content-evenly w-50 align-items-center">
             <div className="pb-1">
@@ -59,9 +116,12 @@ export default function ContactList() {
               >
                 <i className="fa-solid fs-5 cursor-pointer  fa-ellipsis-vertical"></i>
               </div>
-              <ul class="dropdown-menu h-25 shadow">
-                <li class="dropdown-item cursor-pointer">Settings</li>
-                <li class="dropdown-item cursor-pointer" onClick={removeUser}>
+              <ul className="dropdown-menu h-25 shadow">
+                <li className="dropdown-item cursor-pointer">Settings</li>
+                <li
+                  className="dropdown-item cursor-pointer"
+                  onClick={removeUser}
+                >
                   Logout
                 </li>
               </ul>
@@ -103,6 +163,7 @@ export default function ContactList() {
               </div>
               <div className="ms-4 border-bottom w-75 mt-0">
                 <h6 className="mb-1">Name</h6>
+
                 <p className="mt-0 text-muted">message</p>
               </div>
             </li>
