@@ -13,9 +13,6 @@ body {
 .theme-green {
   background-color: #00a884;
 }
-i {
-  cursor: pointer !important;
-}
 .cursor-pointer {
   cursor: pointer;
 }
@@ -110,18 +107,4 @@ ul {
 }
 .homepage {
   width: 97% !important;
-}
-.theme-green-dark {
-  background-color: #008069;
-}
-.mainHomePage {
-  height: 95vh !important ;
-}
-.homepage {
-  width: 97% !important;
-}
-.profile-pic {
-  height: 11rem;
-  width: 11rem;
-  border-radius: 5.5rem;
 }
