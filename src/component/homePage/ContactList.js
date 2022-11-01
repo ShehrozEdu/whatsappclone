@@ -4,6 +4,10 @@ import jwt_decode from "jwt-decode";
 
 export default function ContactList() {
   let [user, setUser] = useState("");
+  let removeUser = () => {
+    sessionStorage.removeItem("auth");
+    window.location.reload();
+  };
   useEffect(() => {
     let userInfo = sessionStorage.getItem("auth");
     if (userInfo) {
@@ -47,7 +51,20 @@ export default function ContactList() {
               <i className="fa-regular cursor-pointer fs-5 fa-message"></i>
             </div>
             <div>
-              <i className="fa-solid fs-5 cursor-pointer  fa-ellipsis-vertical"></i>
+              <div
+                className="p-2 btn btn-muted"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <i className="fa-solid fs-5 cursor-pointer  fa-ellipsis-vertical"></i>
+              </div>
+              <ul class="dropdown-menu h-25 shadow">
+                <li class="dropdown-item cursor-pointer">Settings</li>
+                <li class="dropdown-item cursor-pointer" onClick={removeUser}>
+                  Logout
+                </li>
+              </ul>
             </div>
           </div>
         </div>
