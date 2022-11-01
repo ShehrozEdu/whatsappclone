@@ -114,10 +114,22 @@ export default function ContactList() {
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                <i className="fa-solid fs-5 cursor-pointer  fa-ellipsis-vertical"></i>
+                <i className="fa-solid  fs-5 cursor-pointer  fa-ellipsis-vertical"></i>
               </div>
               <ul className="dropdown-menu h-25 shadow">
-                <li className="dropdown-item cursor-pointer">Settings</li>
+                <li
+                  className="dropdown-item cursor-pointer"
+                  data-bs-toggle="offcanvas"
+                  data-bs-target="#offcanvasScrolling1"
+                  aria-controls="offcanvasScrolling"
+                >
+                  Settings
+                </li>
+
+                {/* -0-------------------------------------------------
+                ----Settings Drawer 
+                ---------------------------------------------*/}
+
                 <li
                   className="dropdown-item cursor-pointer"
                   onClick={removeUser}
@@ -125,12 +137,97 @@ export default function ContactList() {
                   Logout
                 </li>
               </ul>
+              <div
+                className="offcanvas offcanvas-start bg-light"
+                data-bs-scroll="true"
+                data-bs-backdrop="false"
+                tabindex="-1"
+                id="offcanvasScrolling1"
+                aria-labelledby="offcanvasScrollingLabel"
+              >
+                <div className="py-5  pb-3 theme-green-dark  settings-header-width text-white d-flex align-items-center">
+                  <div
+                    type="button"
+                    data-bs-dismiss="offcanvas"
+                    className="ms-4"
+                    aria-label="Close"
+                  >
+                    <i
+                      class="fa fa-arrow-left fs-5 mt-1"
+                      aria-hidden="true"
+                    ></i>
+                  </div>
+                  <div className="text-white ms-4 fs-5 fw-bold">Settings</div>
+                </div>
+                <Scrollbars>
+                  <div className="bg-light mt-5">
+                    <div>
+                      <div className="py-0 p-4 d-flex align-items-center ">
+                        <div className="">
+                          <img
+                            src={user.picture}
+                            alt=""
+                            className="profile-pic-settings "
+                          />
+                        </div>
+                        <div className=" d-flex ms-3 mt-2  flex-column">
+                          <p className="m-0" style={{ fontWeight: "500" }}>
+                            UmMmm
+                          </p>
+                          <p>Status</p>
+                        </div>
+                      </div>
+                      <ul className="ul-settings p-4 d-flex flex-column">
+                        <li>
+                          <i class="fa-solid me-4 text-muted fs-5   fa-bell"></i>
+                          Notifications
+                        </li>
+                        <hr />
+                        <li>
+                          <i class="fa-solid me-4 text-muted fs-5   fa-lock"></i>
+                          Privacy
+                        </li>
+                        <hr />
+                        <li>
+                          <i class="fa-solid me-4 text-muted fs-5   fa-shield-halved"></i>
+                          Security
+                        </li>
+                        <hr />
+                        <li>
+                          <i class="fa-solid me-4 text-muted fs-5   fa-circle-half-stroke"></i>
+                          Theme
+                        </li>
+                        <hr />
+                        <li>
+                          <i class="fa-regular me-4 text-muted fs-5 fa-image"></i>
+                          Chat Wallpaper
+                        </li>
+                        <hr />
+                        <li>
+                          <i class="fa-solid  me-4 text-muted fs-5 fa-file-invoice"></i>
+                          Request Account Info
+                        </li>
+                        <hr />
+                        <li>
+                          <i class="fa-solid me-3 text-muted fs-5   fa-keyboard"></i>
+                          Keyboard Shortcuts
+                        </li>
+                        <hr />
+                        <li>
+                          <i class="fa-solid me-3 text-muted fs-5  fa-circle-question"></i>
+                          Help
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </Scrollbars>
+              </div>
             </div>
           </div>
         </div>
       </div>
       <div className="border-bottom bg-white px-2 py-1">
-        <i className="fa-solid fa-magnifying-glass search-icon text-muted position-absolute"></i>
+        <i className="fa-solid  fa-magnifying-glass search-icon text-muted position-absolute"></i>
         <input
           type="text"
           className="form-control ps-5"
@@ -138,7 +235,7 @@ export default function ContactList() {
         />
       </div>
       <div>
-        <ul className="">
+        <ul className="ul-chat">
           <Scrollbars>
             <li className="py-2 d-flex bg-white ps-3">
               <div>
