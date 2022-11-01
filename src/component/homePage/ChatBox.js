@@ -29,14 +29,18 @@ export default function ChatBox() {
         <div className="bg-light position-fixed justify-content-around p-2 d-flex align-items-center chat-bar">
           <div>
             <i class="fa-regular fs-4 text-muted fa-face-smile"></i>
-            <i class="fa-solid fs-4 text-muted ms-4 fa-paperclip"></i>
+            <abbr title="Attach" className="text-decoration-none">
+              <i class="fa-solid fs-4 text-muted ms-4 fa-paperclip"></i>
+            </abbr>
           </div>
           <div className="w-75">
-            <input
-              type="text"
-              className="form-control ps-5"
-              placeholder="Search or start a new chat"
-            />
+            <abbr title="Type a message" className="text-decoration-none">
+              <input
+                type="text"
+                className="form-control ps-5"
+                placeholder="type a message"
+              />
+            </abbr>
           </div>
           <div>
             <i class="fa-solid fs-4 text-muted fa-microphone me-4"></i>

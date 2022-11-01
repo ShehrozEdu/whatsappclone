@@ -141,3 +141,9 @@ li {
   width: 25rem;
   height: 9rem !important;
 }
+.shadow-hover:hover {
+  box-shadow: 2px 10px 10px rgba(128, 128, 128, 0.258);
+}
+.modal-white-bg {
+  background-color: rgba(255, 255, 255, 0.807);
+}
