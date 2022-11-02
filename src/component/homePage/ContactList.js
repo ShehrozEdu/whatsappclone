@@ -51,7 +51,7 @@ export default function ContactList() {
               <div className="text-white ms-4 fs-5 fw-bold">Profile</div>
             </div>
 
-            <div className="bg-light  py-5 d-flex justify-content-center">
+            <div className="bg-light  py-3 d-flex justify-content-center">
               <div>
                 <img
                   src={user.picture}
