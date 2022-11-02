@@ -38,7 +38,7 @@ export default function ChatBox() {
               <input
                 type="text"
                 className="form-control ps-5"
-                placeholder="type a message"
+                placeholder="Type a message"
               />
             </abbr>
           </div>

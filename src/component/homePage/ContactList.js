@@ -23,7 +23,7 @@ export default function ContactList() {
             <img
               src={user.picture}
               alt=""
-              className="dp cursor-pointer"
+              className="dp cursor-pointer "
               type="button"
               data-bs-toggle="offcanvas"
               data-bs-target="#offcanvasScrolling"
@@ -53,31 +53,37 @@ export default function ContactList() {
 
             <div className="bg-light  py-5 d-flex justify-content-center">
               <div>
-                <img src={user.picture} alt="" className="profile-pic" />
+                <img
+                  src={user.picture}
+                  alt=""
+                  className="profile-pic image-fluid"
+                />
               </div>
             </div>
-            <div className="bg-white p-2 shadow">
-              <p className="text-success small  ms-3">Your Name</p>
-              <div className="d-flex justify-content-between align-items-center">
-                <p className=" ms-3">{user.name}</p>
-                <i class="fa-solid fa-pen me-2 text-muted"></i>
+            <Scrollbars>
+              <div className="bg-white p-2 shadow">
+                <p className="text-success small  ms-3">Your Name</p>
+                <div className="d-flex justify-content-between align-items-center">
+                  <p className=" ms-3">{user.name}</p>
+                  <i class="fa-solid fa-pen me-2 text-muted"></i>
+                </div>
               </div>
-            </div>
 
-            <div className="d-flex p-2 justify-content-center">
-              <p className=" text-muted small mt-3 mx-1">
-                This is not your username or pin. This name will be visible to
-                your WhatsApp contacts.
-              </p>
-            </div>
-
-            <div className="bg-white p-2 shadow">
-              <p className="text-success small  ms-3">About</p>
-              <div className="d-flex justify-content-between align-items-center">
-                <p className=" ms-3">Status....</p>
-                <i class="fa-solid fa-pen me-2 text-muted"></i>
+              <div className="d-flex p-2 justify-content-center">
+                <p className=" text-muted small mt-3 mx-1">
+                  This is not your username or pin. This name will be visible to
+                  your WhatsApp contacts.
+                </p>
               </div>
-            </div>
+
+              <div className="bg-white p-2 shadow">
+                <p className="text-success small  ms-3">About</p>
+                <div className="d-flex justify-content-between align-items-center">
+                  <p className=" ms-3">Status....</p>
+                  <i class="fa-solid fa-pen me-2 text-muted"></i>
+                </div>
+              </div>
+            </Scrollbars>
           </div>
           <div className="d-flex justify-content-evenly w-50 align-items-center">
             <div className="pb-1">
@@ -221,42 +227,42 @@ export default function ContactList() {
                         </div>
                       </div>
                       <ul className="ul-settings p-4 d-flex flex-column">
-                        <li>
+                        <li className=" border-bottom py-3 custom-hover-settings px-2 rounded">
                           <i class=" fa-solid me-4 text-muted fs-5   fa-bell"></i>
                           Notifications
                         </li>
-                        <hr />
-                        <li>
+
+                        <li className="border-bottom py-3 custom-hover-settings px-2 rounded">
                           <i class=" fa-solid me-4 text-muted fs-5   fa-lock"></i>
                           Privacy
                         </li>
-                        <hr />
-                        <li>
+
+                        <li className="border-bottom py-3 custom-hover-settings px-2 rounded">
                           <i class=" fa-solid me-4 text-muted fs-5   fa-shield-halved"></i>
                           Security
                         </li>
-                        <hr />
-                        <li>
+
+                        <li className="border-bottom py-3 custom-hover-settings px-2 rounded">
                           <i class=" fa-solid me-4 text-muted fs-5   fa-circle-half-stroke"></i>
                           Theme
                         </li>
-                        <hr />
-                        <li>
+
+                        <li className="border-bottom py-3 custom-hover-settings px-2 rounded">
                           <i class=" fa-regular me-4 text-muted fs-5 fa-image"></i>
                           Chat Wallpaper
                         </li>
-                        <hr />
-                        <li>
+
+                        <li className="border-bottom py-3 custom-hover-settings px-2 rounded">
                           <i class=" fa-solid  me-4 text-muted fs-5 fa-file-invoice"></i>
                           Request Account Info
                         </li>
-                        <hr />
-                        <li>
+
+                        <li className="border-bottom py-3 custom-hover-settings px-2 rounded">
                           <i class=" fa-solid me-3 text-muted fs-5   fa-keyboard"></i>
                           Keyboard Shortcuts
                         </li>
-                        <hr />
-                        <li>
+
+                        <li className="border-bottom py-3 custom-hover-settings px-2 rounded">
                           <i class=" fa-solid me-3 text-muted fs-5  fa-circle-question"></i>
                           Help
                         </li>

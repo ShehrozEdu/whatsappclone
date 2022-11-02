@@ -9,6 +9,9 @@ body {
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     Helvetica, Lucida Grande, Arial, sans-serif;
 }
+i {
+  cursor: pointer;
+}
 ul {
   list-style: none;
 }
@@ -123,9 +126,9 @@ li {
   width: 97% !important;
 }
 .profile-pic {
-  height: 11rem;
-  width: 11rem;
-  border-radius: 5.5rem;
+  height: 19vh;
+  width: 9vw;
+  border-radius: 50%;
 }
 .profile-pic-settings {
   height: 5.5rem;
@@ -146,4 +149,8 @@ li {
 }
 .modal-white-bg {
   background-color: rgba(255, 255, 255, 0.807);
+}
+
+.custom-hover-settings:hover {
+  background: rgba(128, 128, 128, 0.103);
 }
