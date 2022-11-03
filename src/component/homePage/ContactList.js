@@ -3,13 +3,15 @@ import { Scrollbars } from "react-custom-scrollbars-2";
 import jwt_decode from "jwt-decode";
 import { getUser } from "../../Axios/api";
 
-export default function ContactList() {
+export default function ContactList(openChatBox) {
   let [user, setUser] = useState("");
   let [list, setList] = useState([]);
+
   let removeUser = () => {
     sessionStorage.removeItem("auth");
     window.location.reload();
   };
+
   useEffect(() => {
     let userInfo = sessionStorage.getItem("auth");
     if (userInfo) {
@@ -17,6 +19,7 @@ export default function ContactList() {
       setUser(decode);
     }
   }, []);
+
   const getList = async () => {
     let response = await getUser();
     setList(response);
@@ -24,7 +27,8 @@ export default function ContactList() {
   useEffect(() => {
     getList();
   }, []);
-  console.log(list);
+  // console.log(list);
+
   return (
     <>
       <div className="p-2 border bg-light">
@@ -38,7 +42,7 @@ export default function ContactList() {
               data-bs-toggle="offcanvas"
               data-bs-target="#offcanvasScrolling"
               aria-controls="offcanvasScrolling"
-              referrerpolicy="no-referrer"
+              referrerPolicy="no-referrer"
             />
           </div>
 
@@ -306,13 +310,17 @@ export default function ContactList() {
               return (
                 <>
                   {userList.sub !== user.sub && (
-                    <li className="py-2 d-flex bg-white ps-3" key={index}>
+                    <li
+                      className="py-2 d-flex bg-white ps-3"
+                      key={index}
+                      // onClick={openChatBox(userList)}
+                    >
                       <div>
                         <img
                           src={userList.picture}
                           alt="dp"
                           className="dp"
-                          referrerpolicy="no-referrer"
+                          referrerPolicy="no-referrer"
                         />
                       </div>
                       <div className="ms-4  border-bottom w-75 mt-0">

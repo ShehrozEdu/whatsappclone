@@ -1,16 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import ChatBox from "./ChatBox";
 import ContactList from "./ContactList";
 
 export default function HomePage() {
+  const [data, setData] = useState([]);
+  const openChatBox = (userList) => {
+    setData(userList);
+  };
+  console.log(data);
   return (
     <>
       <div className="d-flex overflow-hidden mainHomePage ">
         <div className="contact-list col-3">
-          <ContactList />
+          <ContactList openChatBox={openChatBox} />
         </div>
         <div className="border bg-light contact-list col-9">
-          <ChatBox />
+          <ChatBox data={data} />
         </div>
       </div>
     </>

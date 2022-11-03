@@ -1,53 +1,52 @@
 import React from "react";
 
-export default function ChatBox() {
+export default function ChatBox(data) {
   return (
-    <div className="col-12 ">
-      <div className="d-flex align-items-center p-2">
-        <div className="ms-3">
-          <img
-            src="https://source.unsplash.com/random"
-            alt=""
-            className="dp cursor-pointer"
-          />
-        </div>
-        <div className="d-flex align-items-center col-12">
-          <div className="d-flex flex-column ms-4 ">
-            <div className="fw-bold m-0">Legend Black</div>
-            <div className="text-muted small text-nowrap overflow-hidden">
-              adipisicing elit. Voluptates, atque vecscscscscscritatis quasi ut
-              nisi incidunt, possimus odio odit, pariatur quos lore Lorem ipsum
+    <>
+      <div className="col-12 ">
+        <div className="d-flex align-items-center p-2">
+          <div className="ms-3">
+            <img src={data.picture} alt="" className="dp cursor-pointer" />
+          </div>
+          <div className="d-flex align-items-center col-12">
+            <div className="d-flex flex-column ms-4 ">
+              <div className="fw-bold m-0">Legend Black</div>
+              <div className="text-muted small text-nowrap overflow-hidden">
+                adipisicing elit. Voluptates, atque vecscscscscscritatis quasi
+                ut nisi incidunt, possimus odio odit, pariatur quos lore Lorem
+                ipsum
+              </div>
+            </div>
+            <div className="position-absolute bg-light end-0 p-3 ">
+              <i className="fa-solid fs-5 mx-3 fa-magnifying-glass text-muted "></i>
+              <i className="fa-solid fs-5 mx-3 cursor-pointer text-muted fa-ellipsis-vertical"></i>
             </div>
           </div>
-          <div className="position-absolute bg-light end-0 p-3 ">
-            <i className="fa-solid fs-5 mx-3 fa-magnifying-glass text-muted "></i>
-            <i className="fa-solid fs-5 mx-3 cursor-pointer text-muted fa-ellipsis-vertical"></i>
+        </div>
+        <div className="chat-box-wallpaper">
+          <div className="bg-light position-fixed justify-content-around p-2 d-flex align-items-center chat-bar">
+            <div>
+              <i class="fa-regular fs-4 text-muted fa-face-smile"></i>
+              <abbr title="Attach" className="text-decoration-none">
+                <i class="fa-solid fs-4 text-muted ms-4 fa-paperclip"></i>
+              </abbr>
+            </div>
+            <div className="w-75">
+              <abbr title="Type a message" className="text-decoration-none">
+                <input
+                  type="text"
+                  className="form-control ps-5"
+                  placeholder="Type a message"
+                />
+              </abbr>
+            </div>
+            <div>
+              <i class="fa-solid fs-4 text-muted fa-microphone me-4"></i>
+            </div>
           </div>
         </div>
       </div>
-      <div className="chat-box-wallpaper">
-        <div className="bg-light position-fixed justify-content-around p-2 d-flex align-items-center chat-bar">
-          <div>
-            <i class="fa-regular fs-4 text-muted fa-face-smile"></i>
-            <abbr title="Attach" className="text-decoration-none">
-              <i class="fa-solid fs-4 text-muted ms-4 fa-paperclip"></i>
-            </abbr>
-          </div>
-          <div className="w-75">
-            <abbr title="Type a message" className="text-decoration-none">
-              <input
-                type="text"
-                className="form-control ps-5"
-                placeholder="Type a message"
-              />
-            </abbr>
-          </div>
-          <div>
-            <i class="fa-solid fs-4 text-muted fa-microphone me-4"></i>
-          </div>
-        </div>
-      </div>
-    </div>
+    </>
 
     //ON CLICK.
     // <div className="col-12 d-flex align-items-center justify-content-center">
