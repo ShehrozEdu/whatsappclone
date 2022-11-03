@@ -302,151 +302,31 @@ export default function ContactList() {
       <div>
         <ul className="ul-chat">
           <Scrollbars>
-            <li className="py-2 d-flex bg-white ps-3">
-              <div>
-                <img
-                  src="https://source.unsplash.com/random"
-                  alt=""
-                  className="dp"
-                />
-              </div>
-              <div className="ms-4 border-bottom w-75 mt-0">
-                <div className="d-flex justify-content-between">
-                  <h6 className="mb-1">Name</h6>
-                  <p className="mb-1 small text-muted">12:27 pm</p>
-                </div>
-                <p className="mt-0 text-muted">message</p>
-              </div>
-            </li>
-            <li className="py-2 d-flex bg-white ps-3">
-              <div>
-                <img
-                  src="https://source.unsplash.com/random"
-                  alt=""
-                  className="dp"
-                />
-              </div>
-              <div className="ms-4 border-bottom w-75 mt-0">
-                <div className="d-flex justify-content-between">
-                  <h6 className="mb-1">Name</h6>
-                  <p className="mb-1 small text-muted">12:27 pm</p>
-                </div>
-                <p className="mt-0 text-muted">message</p>
-              </div>
-            </li>
-            <li className="py-2 d-flex bg-white ps-3">
-              <div>
-                <img
-                  src="https://source.unsplash.com/random"
-                  alt=""
-                  className="dp"
-                />
-              </div>
-              <div className="ms-4 border-bottom w-75 mt-0">
-                <div className="d-flex justify-content-between">
-                  <h6 className="mb-1">Name</h6>
-                  <p className="mb-1 small text-muted">12:27 pm</p>
-                </div>
-                <p className="mt-0 text-muted">message</p>
-              </div>
-            </li>
-            <li className="py-2 d-flex bg-white ps-3">
-              <div>
-                <img
-                  src="https://source.unsplash.com/random"
-                  alt=""
-                  className="dp"
-                />
-              </div>
-              <div className="ms-4 border-bottom w-75 mt-0">
-                <div className="d-flex justify-content-between">
-                  <h6 className="mb-1">Name</h6>
-                  <p className="mb-1 small text-muted">12:27 pm</p>
-                </div>
-                <p className="mt-0 text-muted">message</p>
-              </div>
-            </li>
-            <li className="py-2 d-flex bg-white ps-3">
-              <div>
-                <img
-                  src="https://source.unsplash.com/random"
-                  alt=""
-                  className="dp"
-                />
-              </div>
-              <div className="ms-4 border-bottom w-75 mt-0">
-                <div className="d-flex justify-content-between">
-                  <h6 className="mb-1">Name</h6>
-                  <p className="mb-1 small text-muted">12:27 pm</p>
-                </div>
-                <p className="mt-0 text-muted">message</p>
-              </div>
-            </li>
-            <li className="py-2 d-flex bg-white ps-3">
-              <div>
-                <img
-                  src="https://source.unsplash.com/random"
-                  alt=""
-                  className="dp"
-                />
-              </div>
-              <div className="ms-4 border-bottom w-75 mt-0">
-                <div className="d-flex justify-content-between">
-                  <h6 className="mb-1">Name</h6>
-                  <p className="mb-1 small text-muted">12:27 pm</p>
-                </div>
-                <p className="mt-0 text-muted">message</p>
-              </div>
-            </li>
-            <li className="py-2 d-flex bg-white ps-3">
-              <div>
-                <img
-                  src="https://source.unsplash.com/random"
-                  alt=""
-                  className="dp"
-                />
-              </div>
-              <div className="ms-4 border-bottom w-75 mt-0">
-                <div className="d-flex justify-content-between">
-                  <h6 className="mb-1">Name</h6>
-                  <p className="mb-1 small text-muted">12:27 pm</p>
-                </div>
-                <p className="mt-0 text-muted">message</p>
-              </div>
-            </li>
-            <li className="py-2 d-flex bg-white ps-3">
-              <div>
-                <img
-                  src="https://source.unsplash.com/random"
-                  alt=""
-                  className="dp"
-                />
-              </div>
-              <div className="ms-4 border-bottom w-75 mt-0">
-                <div className="d-flex justify-content-between">
-                  <h6 className="mb-1">Name</h6>
-                  <p className="mb-1 small text-muted">12:27 pm</p>
-                </div>
-                <p className="mt-0 text-muted">message</p>
-              </div>
-            </li>
-
-            <li className="py-2 d-flex bg-white ps-3">
-              <div>
-                <img
-                  src="https://source.unsplash.com/random"
-                  alt=""
-                  className="dp"
-                />
-              </div>
-              <div className="ms-4 mb-5 border-bottom w-75 mt-0">
-                <div className="d-flex justify-content-between">
-                  <h6 className="mb-1">Name</h6>
-                  <p className="mb-1 small text-muted">12:27 pm</p>
-                </div>
-                <p className="mt-0 text-muted">message</p>
-              </div>
-            </li>
+            {list.map((userList, index) => {
+              return (
+                <>
+                  {userList.sub !== user.sub && (
+                    <li className="py-2 d-flex bg-white ps-3" key={index}>
+                      <div>
+                        <img
+                          src={userList.picture}
+                          alt="dp"
+                          className="dp"
+                          referrerpolicy="no-referrer"
+                        />
+                      </div>
+                      <div className="ms-4  border-bottom w-75 mt-0">
+                        <div className="d-flex justify-content-between">
+                          <h6 className="mb-1">{userList.name} </h6>
+                          <p className="mb-1 small text-muted">12:27 pm</p>
+                        </div>
+                        <p className="mt-0 text-muted">message</p>
+                      </div>
+                    </li>
+                  )}
+                </>
+              );
+            })}
           </Scrollbars>
         </ul>
       </div>
