@@ -1,7 +1,7 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import { GoogleLogin } from "@react-oauth/google";
-
+import { addUser } from "../../Axios/api";
 export default function LoginModal() {
   const [play, setPlay] = useState(true);
   const ref = useRef(null);
@@ -9,6 +9,8 @@ export default function LoginModal() {
     setPlay(false);
     ref.current.play();
   };
+
+  useEffect(() => {});
 
   return (
     <>
