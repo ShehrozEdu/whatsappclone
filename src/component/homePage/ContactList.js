@@ -3,7 +3,7 @@ import { Scrollbars } from "react-custom-scrollbars-2";
 import jwt_decode from "jwt-decode";
 import { getUser } from "../../Axios/api";
 
-export default function ContactList(openChatBox) {
+export default function ContactList({ openChatBox }) {
   let [user, setUser] = useState("");
   let [list, setList] = useState([]);
 
@@ -313,7 +313,7 @@ export default function ContactList(openChatBox) {
                     <li
                       className="py-2 d-flex bg-white ps-3"
                       key={index}
-                      // onClick={openChatBox(userList)}
+                      onClick={() => openChatBox(userList)}
                     >
                       <div>
                         <img

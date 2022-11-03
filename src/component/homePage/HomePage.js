@@ -4,7 +4,9 @@ import ContactList from "./ContactList";
 
 export default function HomePage() {
   const [data, setData] = useState([]);
+  let [chatBox, setChatBox] = useState(false);
   const openChatBox = (userList) => {
+    setChatBox(true);
     setData(userList);
   };
   console.log(data);
@@ -15,7 +17,7 @@ export default function HomePage() {
           <ContactList openChatBox={openChatBox} />
         </div>
         <div className="border bg-light contact-list col-9">
-          <ChatBox data={data} />
+          <ChatBox data={data} chatBox={chatBox} />
         </div>
       </div>
     </>
