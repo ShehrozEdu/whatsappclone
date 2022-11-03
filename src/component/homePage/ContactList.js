@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Scrollbars } from "react-custom-scrollbars-2";
 import jwt_decode from "jwt-decode";
+import { getUser } from "../../Axios/api";
 
 export default function ContactList() {
   let [user, setUser] = useState("");
+  let [list, setList] = useState([]);
   let removeUser = () => {
     sessionStorage.removeItem("auth");
     window.location.reload();
@@ -15,6 +17,14 @@ export default function ContactList() {
       setUser(decode);
     }
   }, []);
+  const getList = async () => {
+    let response = await getUser();
+    setList(response);
+  };
+  useEffect(() => {
+    getList();
+  }, []);
+  console.log(list);
   return (
     <>
       <div className="p-2 border bg-light">
@@ -28,6 +38,7 @@ export default function ContactList() {
               data-bs-toggle="offcanvas"
               data-bs-target="#offcanvasScrolling"
               aria-controls="offcanvasScrolling"
+              referrerpolicy="no-referrer"
             />
           </div>
 
