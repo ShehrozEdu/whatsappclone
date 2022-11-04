@@ -17,3 +17,11 @@ export const getUser = async () => {
     console.log(error);
   }
 };
+
+export const setConversation = async (data) => {
+  try {
+    await axios.post(`${URL}/conversation/add`, data);
+  } catch (error) {
+    console.log(error);
+  }
+};

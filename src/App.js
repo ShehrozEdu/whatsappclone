@@ -1,6 +1,5 @@
 import "./index.css";
 import LoginPage from "./component/loginPage/LoginPage";
-import HomePage from "./component/homePage/HomePage";
 import MainHomePage from "./component/homePage/MainHomePage";
 
 function App() {

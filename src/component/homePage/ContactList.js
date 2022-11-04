@@ -1,24 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Scrollbars } from "react-custom-scrollbars-2";
-import jwt_decode from "jwt-decode";
 import { getUser } from "../../Axios/api";
 
-export default function ContactList({ openChatBox }) {
-  let [user, setUser] = useState("");
+export default function ContactList({ openChatBox, user }) {
   let [list, setList] = useState([]);
 
   let removeUser = () => {
     sessionStorage.removeItem("auth");
     window.location.reload();
   };
-
-  useEffect(() => {
-    let userInfo = sessionStorage.getItem("auth");
-    if (userInfo) {
-      let decode = jwt_decode(userInfo);
-      setUser(decode);
-    }
-  }, []);
 
   const getList = async () => {
     let response = await getUser();
