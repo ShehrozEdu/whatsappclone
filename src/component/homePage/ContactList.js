@@ -4,6 +4,12 @@ import { getUser } from "../../Axios/api";
 
 export default function ContactList({ openChatBox, user }) {
   let [list, setList] = useState([]);
+  let [text, setText] = useState("");
+
+  let search = (event) => {
+    let searchData = event.target.value;
+    setText(searchData);
+  };
 
   let removeUser = () => {
     sessionStorage.removeItem("auth");
@@ -12,12 +18,15 @@ export default function ContactList({ openChatBox, user }) {
 
   const getList = async () => {
     let response = await getUser();
-    setList(response);
+    let filterData = response.filter((response) =>
+      response.name.toLowerCase().includes(text.toLowerCase())
+    );
+    setList(filterData);
   };
+
   useEffect(() => {
     getList();
-  }, []);
-  // console.log(list);
+  }, [text]);
 
   return (
     <>
@@ -290,6 +299,7 @@ export default function ContactList({ openChatBox, user }) {
             type="text"
             className="form-control ps-5"
             placeholder="Search or start a new chat"
+            onChange={(event) => search(event)}
           />
         </abbr>
       </div>

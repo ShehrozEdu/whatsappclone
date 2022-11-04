@@ -12,10 +12,8 @@ export default function ChatBox({ data, chatBox }) {
             <div className="d-flex align-items-center col-12">
               <div className="d-flex flex-column ms-4 ">
                 <div className="fw-bold m-0">{data.name}</div>
-                <div className="text-muted small text-nowrap overflow-hidden">
-                  adipisicing elit. Voluptates, atque vecscscscscscritatis quasi
-                  ut nisi incidunt, possimus odio odit, pariatur quos lore Lorem
-                  ipsum
+                <div className="text-success small text-nowrap overflow-hidden">
+                  typing...
                 </div>
               </div>
               <div className="position-absolute bg-light end-0 p-3 ">
