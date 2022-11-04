@@ -8,10 +8,11 @@ export default function HomePage() {
   let [user, setUser] = useState("");
   const [data, setData] = useState([]);
   let [chatBox, setChatBox] = useState(false);
+
   const openChatBox = async (userList) => {
     setChatBox(true);
     setData(userList);
-    await setConversation({ senderId: user.sub, receiverId: data.sub });
+    await setConversation({ senderId: user.sub, receiverId: userList.sub });
   };
   useEffect(() => {
     let userInfo = sessionStorage.getItem("auth");
