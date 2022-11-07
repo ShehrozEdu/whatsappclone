@@ -28,7 +28,7 @@ export default function HomePage() {
           <ContactList openChatBox={openChatBox} user={user} />
         </div>
         <div className="border bg-light contact-list col-9">
-          <ChatBox data={data} chatBox={chatBox} />
+          <ChatBox data={data} chatBox={chatBox} user={user} />
         </div>
       </div>
     </>

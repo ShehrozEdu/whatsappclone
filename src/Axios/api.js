@@ -25,3 +25,11 @@ export const setConversation = async (data) => {
     console.log(error);
   }
 };
+export const getConversation = async (data) => {
+  try {
+    let response = await axios.post(`${URL}/conversation/get`, data);
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
+};

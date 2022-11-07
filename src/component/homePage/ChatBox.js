@@ -1,6 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { getConversation } from "../../Axios/api";
 
-export default function ChatBox({ data, chatBox }) {
+export default function ChatBox({ data, chatBox, user }) {
+  let [text, setText] = useState("");
+  let [conversation, setConversation] = useState({});
+
+  let getConversationDetails = async () => {
+    let newData = await getConversation({
+      senderId: user.sub,
+      receiver: data.sub,
+    });
+    setConversation(newData);
+    console.log(newData);
+  };
+  let sendText = (event) => {
+    let code = event.which;
+    if (code === 13) {
+      let message = {
+        senderId: user.sub,
+        receiver: data.sub,
+        // conversation: conversation._id,
+        type: "text",
+        text: text,
+      };
+      console.log(message);
+    }
+  };
+  useEffect(() => {
+    getConversationDetails();
+  }, [data.sub]);
   return (
     <>
       {chatBox ? (
@@ -36,6 +64,8 @@ export default function ChatBox({ data, chatBox }) {
                     type="text"
                     className="form-control ps-5"
                     placeholder="Type a message"
+                    onChange={(event) => setText(event.target.value)}
+                    onKeyPress={(event) => sendText(event)}
                   />
                 </abbr>
               </div>
