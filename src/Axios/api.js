@@ -28,7 +28,7 @@ export const setConversation = async (data) => {
 export const getConversation = async (data) => {
   try {
     let response = await axios.post(`${URL}/conversation/get`, data);
-    return response;
+    return response.data;
   } catch (error) {
     console.log(error);
   }

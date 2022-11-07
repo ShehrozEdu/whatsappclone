@@ -8,10 +8,10 @@ export default function ChatBox({ data, chatBox, user }) {
   let getConversationDetails = async () => {
     let newData = await getConversation({
       senderId: user.sub,
-      receiver: data.sub,
+      receiverId: data.sub,
     });
-    setConversation(newData);
     console.log(newData);
+    setConversation(newData);
   };
   let sendText = (event) => {
     let code = event.which;
@@ -19,7 +19,7 @@ export default function ChatBox({ data, chatBox, user }) {
       let message = {
         senderId: user.sub,
         receiver: data.sub,
-        // conversation: conversation._id,
+        conversation: conversation._id,
         type: "text",
         text: text,
       };
@@ -35,7 +35,12 @@ export default function ChatBox({ data, chatBox, user }) {
         <div className="col-12 ">
           <div className="d-flex align-items-center p-2">
             <div className="ms-3">
-              <img src={data.picture} alt="" className="dp cursor-pointer" />
+              <img
+                src={data.picture}
+                alt=""
+                className="dp cursor-pointer"
+                referrerPolicy="no-referrer"
+              />
             </div>
             <div className="d-flex align-items-center col-12">
               <div className="d-flex flex-column ms-4 ">
