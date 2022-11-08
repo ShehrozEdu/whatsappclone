@@ -35,7 +35,15 @@ export const getConversation = async (data) => {
 };
 export const newMessage = async (data) => {
   try {
-    await axios.post(`${URL}/messages/get`, data);
+    await axios.post(`${URL}/messages/add`, data);
+  } catch (error) {
+    console.log(error);
+  }
+};
+export const getMessages = async (id) => {
+  try {
+    let response = await axios.get(`${URL}/messages/get/${id}`);
+    return response.data;
   } catch (error) {
     console.log(error);
   }

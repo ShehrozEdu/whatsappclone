@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getConversation, newMessage } from "../../Axios/api";
+import { getConversation, getMessages, newMessage } from "../../Axios/api";
 
 export default function ChatBox({ data, chatBox, user }) {
   let [text, setText] = useState("");
@@ -18,18 +18,26 @@ export default function ChatBox({ data, chatBox, user }) {
       let message = {
         senderId: user.sub,
         receiverId: data.sub,
-        conversation: conversation._id,
+        conversationId: conversation._id,
         type: "text",
         text: text,
       };
       await newMessage(message);
-      setText(" ");
-      // console.log(message);
+      setText("");
     }
   };
+  let getMessagesDetails = async () => {
+    let data = await getMessages(conversation._id);
+    console.log(data);
+  };
+  console.log(conversation._id);
+  useEffect(() => {
+    conversation._id && getMessagesDetails();
+  }, [conversation._id]);
   useEffect(() => {
     getConversationDetails();
   }, [data.sub]);
+
   return (
     <>
       {chatBox ? (
