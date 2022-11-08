@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getConversation } from "../../Axios/api";
+import { getConversation, newMessage } from "../../Axios/api";
 
 export default function ChatBox({ data, chatBox, user }) {
   let [text, setText] = useState("");
@@ -12,7 +12,7 @@ export default function ChatBox({ data, chatBox, user }) {
     });
     setConversation(newData);
   };
-  let sendText = (event) => {
+  let sendText = async (event) => {
     let code = event.which;
     if (code === 13) {
       let message = {
@@ -22,7 +22,9 @@ export default function ChatBox({ data, chatBox, user }) {
         type: "text",
         text: text,
       };
-      console.log(message);
+      await newMessage(message);
+      setText(" ");
+      // console.log(message);
     }
   };
   useEffect(() => {
@@ -70,6 +72,7 @@ export default function ChatBox({ data, chatBox, user }) {
                     placeholder="Type a message"
                     onChange={(event) => setText(event.target.value)}
                     onKeyPress={(event) => sendText(event)}
+                    value={text}
                   />
                 </abbr>
               </div>

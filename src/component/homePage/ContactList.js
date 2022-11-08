@@ -142,7 +142,7 @@ export default function ContactList({ openChatBox, user }) {
                   <i className="fa-solid  fs-5 cursor-pointer  fa-ellipsis-vertical"></i>
                 </div>
               </abbr>
-              <ul className="dropdown-menu h-25 shadow">
+              <ul className="dropdown-menu shadow">
                 <li
                   className="dropdown-item cursor-pointer"
                   data-bs-toggle="offcanvas"
