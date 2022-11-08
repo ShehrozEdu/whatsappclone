@@ -71,11 +71,11 @@ export default function LoginModal() {
               {/* == btn == */}
               {play ? (
                 <button
-                  class="play-btn position-absolute "
+                  className="play-btn position-absolute "
                   onClick={handlePlayVideo}
                 >
-                  <div class="pause-btn">
-                    <div class="btn-main-play">
+                  <div className="pause-btn">
+                    <div className="btn-main-play">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="28"

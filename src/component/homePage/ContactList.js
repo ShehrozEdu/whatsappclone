@@ -49,7 +49,7 @@ export default function ContactList({ openChatBox, user }) {
             className="offcanvas offcanvas-start bg-light"
             data-bs-scroll="true"
             data-bs-backdrop="false"
-            tabindex="-1"
+            tabIndex="-1"
             id="offcanvasScrolling"
             aria-labelledby="offcanvasScrollingLabel"
           >
@@ -60,7 +60,10 @@ export default function ContactList({ openChatBox, user }) {
                 className="ms-4"
                 aria-label="Close"
               >
-                <i class="fa fa-arrow-left fs-5 mt-1" aria-hidden="true"></i>
+                <i
+                  className="fa fa-arrow-left fs-5 mt-1"
+                  aria-hidden="true"
+                ></i>
               </div>
               <div className="text-white ms-4 fs-5 fw-bold">Profile</div>
             </div>
@@ -79,7 +82,7 @@ export default function ContactList({ openChatBox, user }) {
                 <p className="text-success small  ms-3">Your Name</p>
                 <div className="d-flex justify-content-between align-items-center">
                   <p className=" ms-3">{user.name}</p>
-                  <i class="fa-solid fa-pen me-2 text-muted"></i>
+                  <i className="fa-solid fa-pen me-2 text-muted"></i>
                 </div>
               </div>
 
@@ -94,7 +97,7 @@ export default function ContactList({ openChatBox, user }) {
                 <p className="text-success small  ms-3">About</p>
                 <div className="d-flex justify-content-between align-items-center">
                   <p className=" ms-3">Status....</p>
-                  <i class="fa-solid fa-pen me-2 text-muted"></i>
+                  <i className="fa-solid fa-pen me-2 text-muted"></i>
                 </div>
               </div>
             </Scrollbars>
@@ -111,7 +114,7 @@ export default function ContactList({ openChatBox, user }) {
                 id="df9d3429-f0ef-48b5-b5eb-f9d27b2deba6"
                 x="0px"
                 y="0px"
-                enable-background="new 0 0 24 24"
+                enableBackground="new 0 0 24 24"
                 // xml:space="preserve"
               >
                 <path
@@ -162,36 +165,36 @@ export default function ContactList({ openChatBox, user }) {
                 </li>
               </ul>
               <div
-                class="modal fade modal-white-bg"
+                className="modal fade modal-white-bg"
                 id="logout"
-                tabindex="-1"
+                tabIndex="-1"
                 aria-labelledby="exampleModalLabel"
                 aria-hidden="true"
               >
-                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                  <div class="modal-content shadow border-0">
+                <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                  <div className="modal-content shadow border-0">
                     <div className="p-3">
                       <h1
-                        class="modal-title fs-5 text-secondary"
+                        className="modal-title fs-5 text-secondary"
                         id="exampleModalLabel"
                       >
                         Log out?
                       </h1>
                     </div>
-                    <div class="modal-body text-muted small">
+                    <div className="modal-body text-muted small">
                       Are you sure you want to log out?
                     </div>
-                    <div class="d-flex justify-content-end p-4">
+                    <div className="d-flex justify-content-end p-4">
                       <button
                         type="button"
-                        class="border text-success bg-transparent btn shadow-hover me-4 px-4"
+                        className="border text-success bg-transparent btn shadow-hover me-4 px-4"
                         data-bs-dismiss="modal"
                       >
                         Cancel
                       </button>
                       <button
                         type="button"
-                        class="btn btn-success shadow-hover px-4"
+                        className="btn btn-success shadow-hover px-4"
                         onClick={removeUser}
                       >
                         Logout
@@ -204,7 +207,7 @@ export default function ContactList({ openChatBox, user }) {
                 className="offcanvas offcanvas-start bg-light"
                 data-bs-scroll="true"
                 data-bs-backdrop="false"
-                tabindex="-1"
+                tabIndex="-1"
                 id="offcanvasScrolling1"
                 aria-labelledby="offcanvasScrollingLabel"
               >
@@ -216,7 +219,7 @@ export default function ContactList({ openChatBox, user }) {
                     aria-label="Close"
                   >
                     <i
-                      class="fa fa-arrow-left fs-5 mt-1"
+                      className="fa fa-arrow-left fs-5 mt-1"
                       aria-hidden="true"
                     ></i>
                   </div>
@@ -242,42 +245,42 @@ export default function ContactList({ openChatBox, user }) {
                       </div>
                       <ul className="ul-settings p-4 d-flex flex-column">
                         <li className=" border-bottom py-3 custom-hover-settings px-2 rounded">
-                          <i class=" fa-solid me-4 text-muted fs-5   fa-bell"></i>
+                          <i className=" fa-solid me-4 text-muted fs-5   fa-bell"></i>
                           Notifications
                         </li>
 
                         <li className="border-bottom py-3 custom-hover-settings px-2 rounded">
-                          <i class=" fa-solid me-4 text-muted fs-5   fa-lock"></i>
+                          <i className=" fa-solid me-4 text-muted fs-5   fa-lock"></i>
                           Privacy
                         </li>
 
                         <li className="border-bottom py-3 custom-hover-settings px-2 rounded">
-                          <i class=" fa-solid me-4 text-muted fs-5   fa-shield-halved"></i>
+                          <i className=" fa-solid me-4 text-muted fs-5   fa-shield-halved"></i>
                           Security
                         </li>
 
                         <li className="border-bottom py-3 custom-hover-settings px-2 rounded">
-                          <i class=" fa-solid me-4 text-muted fs-5   fa-circle-half-stroke"></i>
+                          <i className=" fa-solid me-4 text-muted fs-5   fa-circle-half-stroke"></i>
                           Theme
                         </li>
 
                         <li className="border-bottom py-3 custom-hover-settings px-2 rounded">
-                          <i class=" fa-regular me-4 text-muted fs-5 fa-image"></i>
+                          <i className=" fa-regular me-4 text-muted fs-5 fa-image"></i>
                           Chat Wallpaper
                         </li>
 
                         <li className="border-bottom py-3 custom-hover-settings px-2 rounded">
-                          <i class=" fa-solid  me-4 text-muted fs-5 fa-file-invoice"></i>
+                          <i className=" fa-solid  me-4 text-muted fs-5 fa-file-invoice"></i>
                           Request Account Info
                         </li>
 
                         <li className="border-bottom py-3 custom-hover-settings px-2 rounded">
-                          <i class=" fa-solid me-3 text-muted fs-5   fa-keyboard"></i>
+                          <i className=" fa-solid me-3 text-muted fs-5   fa-keyboard"></i>
                           Keyboard Shortcuts
                         </li>
 
                         <li className="border-bottom py-3 custom-hover-settings px-2 rounded">
-                          <i class=" fa-solid me-3 text-muted fs-5  fa-circle-question"></i>
+                          <i className=" fa-solid me-3 text-muted fs-5  fa-circle-question"></i>
                           Help
                         </li>
                       </ul>
@@ -311,8 +314,8 @@ export default function ContactList({ openChatBox, user }) {
                 <>
                   {userList.sub !== user.sub && (
                     <li
-                      className="py-2 d-flex bg-white ps-3"
                       key={index}
+                      className="py-2 d-flex bg-white ps-3"
                       onClick={() => openChatBox(userList)}
                     >
                       <div>
