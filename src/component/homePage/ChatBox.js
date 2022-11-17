@@ -7,6 +7,7 @@ export default function ChatBox({ data, chatBox, user }) {
   let [text, setText] = useState("");
   let [conversation, setConversation] = useState({});
   const [message, setMessage] = useState([]);
+  const [messageFlag, setMessageFlag] = useState(false);
 
   let getConversationDetails = async () => {
     let newData = await getConversation({
@@ -27,6 +28,7 @@ export default function ChatBox({ data, chatBox, user }) {
       };
       await newMessage(message);
       setText("");
+      setMessageFlag(true);
     }
   };
   let getMessagesDetails = async () => {
@@ -37,10 +39,10 @@ export default function ChatBox({ data, chatBox, user }) {
   // console.log(data);
   useEffect(() => {
     getMessagesDetails();
-  }, [conversation, data]);
+  }, [conversation, data, messageFlag]);
   useEffect(() => {
     getConversationDetails();
-  }, [data.sub]);
+  }, [data.sub, messageFlag]);
   return (
     <>
       {chatBox ? (
