@@ -28,7 +28,7 @@ export default function ChatBox({ data, chatBox, user }) {
       };
       await newMessage(message);
       setText("");
-      setMessageFlag(true);
+      setMessageFlag((prev) => !prev);
     }
   };
   let getMessagesDetails = async () => {
