@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { getConversation, getMessages, newMessage } from "../../Axios/api";
+import Message from "./Message";
 
 export default function ChatBox({ data, chatBox, user }) {
   let [text, setText] = useState("");
   let [conversation, setConversation] = useState({});
+  const [message, setMessage] = useState([]);
 
   let getConversationDetails = async () => {
     let newData = await getConversation({
@@ -28,16 +30,16 @@ export default function ChatBox({ data, chatBox, user }) {
   };
   let getMessagesDetails = async () => {
     let data = await getMessages(conversation._id);
-    console.log(data);
+    setMessage(data);
   };
-  console.log(conversation._id);
+  // console.log(conversation._id);
+  // console.log(data);
   useEffect(() => {
-    conversation._id && getMessagesDetails();
-  }, [conversation._id]);
+    getMessagesDetails();
+  }, [conversation, data]);
   useEffect(() => {
     getConversationDetails();
   }, [data.sub]);
-
   return (
     <>
       {chatBox ? (
@@ -65,6 +67,11 @@ export default function ChatBox({ data, chatBox, user }) {
             </div>
           </div>
           <div className="chat-box-wallpaper">
+            <div>
+              {message.map((msg) => {
+                return <Message msg={msg} />;
+              })}
+            </div>
             <div className="bg-light position-fixed justify-content-around p-2 d-flex align-items-center chat-bar">
               <div>
                 <i className="fa-regular fs-4 text-muted fa-face-smile"></i>
