@@ -171,3 +171,7 @@ li {
 .custom-marginBtm {
   margin-bottom: 12rem;
 }
+
+.test-w {
+  width: 100%;
+}
