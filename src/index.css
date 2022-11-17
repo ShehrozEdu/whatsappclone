@@ -23,6 +23,9 @@ li {
 .theme-green {
   background-color: #00a884;
 }
+.chat-green {
+  background-color: #dcf8c6;
+}
 .cursor-pointer {
   cursor: pointer;
 }
@@ -164,4 +167,7 @@ li {
 
 .time-fs {
   font-size: 0.8rem;
+}
+.custom-marginBtm {
+  margin-bottom: 12rem;
 }
