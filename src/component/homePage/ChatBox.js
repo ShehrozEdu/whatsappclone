@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getConversation, getMessages, newMessage } from "../../Axios/api";
 import Message from "./Message";
+import { Scrollbars } from "react-custom-scrollbars-2";
 
 export default function ChatBox({ data, chatBox, user }) {
   let [text, setText] = useState("");
@@ -67,34 +68,37 @@ export default function ChatBox({ data, chatBox, user }) {
             </div>
           </div>
           <div className="chat-box-wallpaper">
-            <div>
-              {message.map((msg) => {
-                return <Message msg={msg} />;
-              })}
-            </div>
-            <div className="bg-light position-fixed justify-content-around p-2 d-flex align-items-center chat-bar">
-              <div>
-                <i className="fa-regular fs-4 text-muted fa-face-smile"></i>
-                <abbr title="Attach" className="text-decoration-none">
-                  <i className="fa-solid fs-4 text-muted ms-4 fa-paperclip"></i>
-                </abbr>
+            <Scrollbars>
+              <div className="h-100 mb-5">
+                {message.map((msg) => {
+                  return <Message msg={msg} />;
+                })}
               </div>
-              <div className="w-75">
-                <abbr title="Type a message" className="text-decoration-none">
-                  <input
-                    type="text"
-                    className="form-control ps-2"
-                    placeholder="Type a message"
-                    onChange={(event) => setText(event.target.value)}
-                    onKeyPress={(event) => sendText(event)}
-                    value={text}
-                  />
-                </abbr>
+
+              <div className="bg-light position-fixed justify-content-around p-2 d-flex align-items-center chat-bar">
+                <div>
+                  <i className="fa-regular fs-4 text-muted fa-face-smile"></i>
+                  <abbr title="Attach" className="text-decoration-none">
+                    <i className="fa-solid fs-4 text-muted ms-4 fa-paperclip"></i>
+                  </abbr>
+                </div>
+                <div className="w-75">
+                  <abbr title="Type a message" className="text-decoration-none">
+                    <input
+                      type="text"
+                      className="form-control ps-2"
+                      placeholder="Type a message"
+                      onChange={(event) => setText(event.target.value)}
+                      onKeyPress={(event) => sendText(event)}
+                      value={text}
+                    />
+                  </abbr>
+                </div>
+                <div>
+                  <i className="fa-solid fs-4 text-muted fa-microphone me-4"></i>
+                </div>
               </div>
-              <div>
-                <i className="fa-solid fs-4 text-muted fa-microphone me-4"></i>
-              </div>
-            </div>
+            </Scrollbars>
           </div>
         </div>
       ) : (

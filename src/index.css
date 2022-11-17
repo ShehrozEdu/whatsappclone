@@ -155,3 +155,13 @@ li {
 .custom-hover-settings:hover {
   background: rgba(128, 128, 128, 0.103);
 }
+
+.chat-coming {
+  max-width: 80%;
+  word-break: break-all;
+  width: fit-content;
+}
+
+.time-fs {
+  font-size: 0.8rem;
+}
