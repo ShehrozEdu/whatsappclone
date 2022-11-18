@@ -7,10 +7,10 @@ const Message = ({ msg, user }) => {
     <>
       <div className="mx-5 col-8">
         {user.sub === msg.senderId ? (
-          <section className="d-flex justify-content-end">
-            <div className=" col-5 rounded-2 p-2 small my-1 shadow border chat-green ms-5">
+          <section className="d-flex justify-content-end ">
+            <div className="  d-flex justify-content-between test-mc-width rounded-2 p-2 small my-1 chat-shadow chat-green ms-5">
               <div className=" chat-coming">{msg.text}</div>
-              <div className="d-flex justify-content-end text-muted ps-5 mt-0 pt-0 time-fs">
+              <div className="d-flex col-1 justify-content-end align-self-end text-muted ps-5 mt-1 pt-0 time-fs">
                 {FormatDate(msg.createdAt)}
               </div>
             </div>
@@ -20,12 +20,12 @@ const Message = ({ msg, user }) => {
             <div
               className={
                 user.sub !== msg.senderId
-                  ? " col-5 rounded-2 p-2 small my-1 shadow border bg-light"
+                  ? " d-flex justify-content-between test-mc-width rounded-2 p-2 small my-1 chat-shadow border bg-light"
                   : null
               }
             >
               <div className=" chat-coming">{msg.text}</div>
-              <div className="d-flex justify-content-end text-muted ps-5 mt-0 pt-0 time-fs">
+              <div className="d-flex align-self-end justify-content-end text-muted ps-5 mt-0 pt-0 time-fs">
                 {FormatDate(msg.createdAt)}
               </div>
             </div>

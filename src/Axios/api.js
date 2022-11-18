@@ -52,7 +52,7 @@ export const getMessages = async (id) => {
 
 export const fileUpload = async (data) => {
   try {
-    await axios.post(`${URL}/files/upload`, data);
+    await axios.post(`${URL}/file/upload`, data);
   } catch (error) {
     console.log(error);
   }
