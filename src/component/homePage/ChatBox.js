@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { getConversation, getMessages, newMessage } from "../../Axios/api";
+import {
+  fileUpload,
+  getConversation,
+  getMessages,
+  newMessage,
+} from "../../Axios/api";
 import Message from "./Message";
 import { Scrollbars } from "react-custom-scrollbars-2";
 
@@ -8,7 +13,7 @@ export default function ChatBox({ data, chatBox, user }) {
   let [conversation, setConversation] = useState({});
   const [message, setMessage] = useState([]);
   const [messageFlag, setMessageFlag] = useState(false);
-
+  const [file, setFile] = useState([]);
   let getConversationDetails = async () => {
     let newData = await getConversation({
       senderId: user.sub,
@@ -43,6 +48,25 @@ export default function ChatBox({ data, chatBox, user }) {
   useEffect(() => {
     getConversationDetails();
   }, [data.sub, messageFlag]);
+
+  const getFile = (e) => {
+    setFile(e.target.files[0]);
+    setText(e.target.files[0].name);
+    // console.log(e.target.files[0]);
+  };
+
+  const getImage = async () => {
+    if (file) {
+      const data = new FormData();
+      data.append("name", file.name);
+      data.append("file ", file);
+      await fileUpload(data);
+    }
+  };
+
+  useEffect(() => {
+    getImage();
+  }, [file]);
   return (
     <>
       {chatBox ? (
@@ -81,8 +105,16 @@ export default function ChatBox({ data, chatBox, user }) {
                 <div>
                   <i className="fa-regular fs-4 text-muted fa-face-smile"></i>
                   <abbr title="Attach" className="text-decoration-none">
-                    <i className="fa-solid fs-4 text-muted ms-4 fa-paperclip"></i>
+                    <label htmlFor="textAttachment">
+                      <i className="fa-solid fs-4 text-muted ms-4 fa-paperclip"></i>
+                    </label>
                   </abbr>
+                  <input
+                    type="file"
+                    id="textAttachment"
+                    style={{ display: "none" }}
+                    onChange={(e) => getFile(e)}
+                  />
                 </div>
                 <div className="w-75">
                   <abbr title="Type a message" className="text-decoration-none">

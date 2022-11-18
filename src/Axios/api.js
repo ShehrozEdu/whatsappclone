@@ -40,10 +40,19 @@ export const newMessage = async (data) => {
     console.log(error);
   }
 };
+
 export const getMessages = async (id) => {
   try {
     let response = await axios.get(`${URL}/messages/get/${id}`);
     return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const fileUpload = async (data) => {
+  try {
+    await axios.post(`${URL}/files/upload`, data);
   } catch (error) {
     console.log(error);
   }
