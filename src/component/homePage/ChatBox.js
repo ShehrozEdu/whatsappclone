@@ -14,6 +14,7 @@ export default function ChatBox({ data, chatBox, user }) {
   const [message, setMessage] = useState([]);
   const [messageFlag, setMessageFlag] = useState(false);
   const [file, setFile] = useState([]);
+  const [image, setImage] = useState("");
   let getConversationDetails = async () => {
     let newData = await getConversation({
       senderId: user.sub,
@@ -24,15 +25,27 @@ export default function ChatBox({ data, chatBox, user }) {
   let sendText = async (event) => {
     let code = event.which;
     if (code === 13) {
-      let message = {
-        senderId: user.sub,
-        receiverId: data.sub,
-        conversationId: conversation._id,
-        type: "text",
-        text: text,
-      };
+      let message = {};
+      if (!file) {
+        message = {
+          senderId: user.sub,
+          receiverId: data.sub,
+          conversationId: conversation._id,
+          type: "text",
+          text: text,
+        };
+      } else {
+        message = {
+          senderId: user.sub,
+          receiverId: data.sub,
+          conversationId: conversation._id,
+          type: "file",
+          text: image,
+        };
+      }
       await newMessage(message);
       setText("");
+      setImage("");
       setMessageFlag((prev) => !prev);
     }
   };
@@ -60,7 +73,9 @@ export default function ChatBox({ data, chatBox, user }) {
       const data = new FormData();
       data.append("name", file.name);
       data.append("file", file);
-      await fileUpload(data);
+      let response = await fileUpload(data);
+      setImage(response);
+      console.log(response);
     }
   };
 
