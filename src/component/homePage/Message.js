@@ -2,6 +2,7 @@ import React from "react";
 import { FormatDate } from "./../../utils/FormatDate";
 
 const Message = ({ msg, user }) => {
+  console.log(msg);
   return (
     <>
       {/* sender message */}
@@ -14,7 +15,7 @@ const Message = ({ msg, user }) => {
                   {msg?.text?.includes(".pdf") ? (
                     <div></div>
                   ) : (
-                    <img src={msg.text} alt="img" />
+                    <img src={msg.text} alt="loading" className="chat-image" />
                   )}
                 </div>
               ) : (

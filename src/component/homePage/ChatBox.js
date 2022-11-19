@@ -13,7 +13,7 @@ export default function ChatBox({ data, chatBox, user }) {
   let [conversation, setConversation] = useState({});
   const [message, setMessage] = useState([]);
   const [messageFlag, setMessageFlag] = useState(false);
-  const [file, setFile] = useState([]);
+  const [file, setFile] = useState();
   const [image, setImage] = useState("");
   let getConversationDetails = async () => {
     let newData = await getConversation({
@@ -45,6 +45,7 @@ export default function ChatBox({ data, chatBox, user }) {
       }
       await newMessage(message);
       setText("");
+      setFile();
       setImage("");
       setMessageFlag((prev) => !prev);
     }
@@ -65,7 +66,6 @@ export default function ChatBox({ data, chatBox, user }) {
   const getFile = (e) => {
     setFile(e.target.files[0]);
     setText(e.target.files[0].name);
-    // console.log(e.target.files[0]);
   };
 
   const getImage = async () => {
@@ -74,8 +74,7 @@ export default function ChatBox({ data, chatBox, user }) {
       data.append("name", file.name);
       data.append("file", file);
       let response = await fileUpload(data);
-      setImage(response);
-      console.log(response);
+      setImage(response.data);
     }
   };
 
