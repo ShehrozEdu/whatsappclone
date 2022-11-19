@@ -110,8 +110,8 @@ export default function ChatBox({ data, chatBox, user }) {
           <div className="chat-box-wallpaper">
             <Scrollbars>
               <div className="custom-marginBtm pt-3 w-100">
-                {message.map((msg) => {
-                  return <Message msg={msg} user={user} />;
+                {message.map((msg, index) => {
+                  return <Message msg={msg} user={user} key={index} />;
                 })}
               </div>
 

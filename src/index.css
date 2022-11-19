@@ -201,3 +201,12 @@ li {
   background-color: rgba(128, 128, 128, 0.136);
   border-radius: 0.5rem;
 }
+
+.chat-pdf-sec {
+  width: 40%;
+}
+
+.inItImage {
+  height: 75%;
+  width: 75%;
+}
