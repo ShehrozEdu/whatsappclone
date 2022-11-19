@@ -59,7 +59,7 @@ export default function ChatBox({ data, chatBox, user }) {
     if (file) {
       const data = new FormData();
       data.append("name", file.name);
-      data.append("file ", file);
+      data.append("file", file);
       await fileUpload(data);
     }
   };
@@ -111,6 +111,7 @@ export default function ChatBox({ data, chatBox, user }) {
                   </abbr>
                   <input
                     type="file"
+                    name="file"
                     id="textAttachment"
                     style={{ display: "none" }}
                     onChange={(e) => getFile(e)}
