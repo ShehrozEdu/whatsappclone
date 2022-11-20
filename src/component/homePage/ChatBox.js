@@ -22,6 +22,7 @@ export default function ChatBox({ data, chatBox, user }) {
     });
     setConversation(newData);
   };
+
   let sendText = async (event) => {
     let code = event.which;
     if (code === 13) {
@@ -54,8 +55,7 @@ export default function ChatBox({ data, chatBox, user }) {
     let data = await getMessages(conversation._id);
     setMessage(data);
   };
-  // console.log(conversation._id);
-  // console.log(data);
+  useEffect(() => {}, [message]);
   useEffect(() => {
     getMessagesDetails();
   }, [conversation, data, messageFlag]);
@@ -107,47 +107,46 @@ export default function ChatBox({ data, chatBox, user }) {
               </div>
             </div>
           </div>
-          <div className="chat-box-wallpaper">
-            <Scrollbars>
-              <div className="custom-marginBtm pt-3 w-100">
+          <div className="chat-box-wallpaper w-100">
+            <Scrollbars className="scrollBar">
+              <div className="pt-3 w-100">
                 {message.map((msg, index) => {
                   return <Message msg={msg} user={user} key={index} />;
                 })}
               </div>
-
-              <div className="bg-light position-fixed justify-content-around p-2 d-flex align-items-center chat-bar">
-                <div>
-                  <i className="fa-regular fs-4 text-muted fa-face-smile"></i>
-                  <abbr title="Attach" className="text-decoration-none">
-                    <label htmlFor="textAttachment">
-                      <i className="fa-solid fs-4 text-muted ms-4 fa-paperclip"></i>
-                    </label>
-                  </abbr>
-                  <input
-                    type="file"
-                    name="file"
-                    id="textAttachment"
-                    style={{ display: "none" }}
-                    onChange={(e) => getFile(e)}
-                  />
-                </div>
-                <div className="w-75">
-                  <abbr title="Type a message" className="text-decoration-none">
-                    <input
-                      type="text"
-                      className="form-control ps-2"
-                      placeholder="Type a message"
-                      onChange={(event) => setText(event.target.value)}
-                      onKeyPress={(event) => sendText(event)}
-                      value={text}
-                    />
-                  </abbr>
-                </div>
-                <div>
-                  <i className="fa-solid fs-4 text-muted fa-microphone me-4"></i>
-                </div>
-              </div>
             </Scrollbars>
+            <div className="bg-light position-fixed justify-content-around p-2 d-flex align-items-center chat-bar">
+              <div>
+                <i className="fa-regular fs-4 text-muted fa-face-smile"></i>
+                <abbr title="Attach" className="text-decoration-none">
+                  <label htmlFor="textAttachment">
+                    <i className="fa-solid fs-4 text-muted ms-4 fa-paperclip"></i>
+                  </label>
+                </abbr>
+                <input
+                  type="file"
+                  name="file"
+                  id="textAttachment"
+                  style={{ display: "none" }}
+                  onChange={(e) => getFile(e)}
+                />
+              </div>
+              <div className="w-75">
+                <abbr title="Type a message" className="text-decoration-none">
+                  <input
+                    type="text"
+                    className="form-control ps-2"
+                    placeholder="Type a message"
+                    onChange={(event) => setText(event.target.value)}
+                    onKeyPress={(event) => sendText(event)}
+                    value={text}
+                  />
+                </abbr>
+              </div>
+              <div>
+                <i className="fa-solid fs-4 text-muted fa-microphone me-4"></i>
+              </div>
+            </div>
           </div>
         </div>
       ) : (

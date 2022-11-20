@@ -5,7 +5,7 @@ const Message = ({ msg, user }) => {
   return (
     <>
       {/* sender message */}
-      <div className="mx-5 col-8">
+      <div className="mx-5">
         {user.sub === msg.senderId ? (
           <section className="d-flex justify-content-end ">
             {msg.type === "file" ? (

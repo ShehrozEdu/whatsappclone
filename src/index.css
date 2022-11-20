@@ -168,9 +168,6 @@ li {
 .time-fs {
   font-size: 0.8rem;
 }
-.custom-marginBtm {
-  margin-bottom: 12rem;
-}
 
 .test-w {
   width: 100%;
@@ -209,4 +206,8 @@ li {
 .inItImage {
   height: 75%;
   width: 75%;
+}
+
+.scrollBar {
+  height: 78.5% !important;
 }
