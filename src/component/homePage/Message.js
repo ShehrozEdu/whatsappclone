@@ -1,5 +1,5 @@
 import React from "react";
-import { FormatDate } from "./../../utils/FormatDate";
+import { downloadMedia, FormatDate } from "./../../utils/FormatDate";
 
 const Message = ({ msg, user }) => {
   return (
@@ -21,7 +21,13 @@ const Message = ({ msg, user }) => {
                             className="pdf"
                           />
                         </div>
-                        <div className="ms-2 small text-break">{msg.text}</div>
+                        <i
+                          className="position-absolute bottom-custom-download p-1 fa-solid fa-arrow-down  small text-muted"
+                          onClick={(e) => downloadMedia(e, msg.text)}
+                        ></i>
+                        <div className="ms-2 small text-break">
+                          {msg.text?.split("/").pop()}
+                        </div>
                       </div>
                       <div className="text-muted small pe-1 position-absolute end-0 bottom-0">
                         {FormatDate(msg.createdAt)}
@@ -37,6 +43,11 @@ const Message = ({ msg, user }) => {
                           alt="loading"
                           className="chat-image"
                         />
+                        <i
+                          className="position-absolute bottom-custom-download-receive p-1 small fa-solid fa-arrow-down  small text-muted"
+                          onClick={(e) => downloadMedia(e, msg.text)}
+                        ></i>
+
                         <div className="text-light pe-1 position-absolute end-0 bottom-0">
                           {FormatDate(msg.createdAt)}
                         </div>
@@ -46,7 +57,7 @@ const Message = ({ msg, user }) => {
                 )}
               </>
             ) : (
-              <div className="d-flex justify-content-between test-mc-width rounded-2 p-2 small my-1 chat-shadow chat-green ">
+              <div className="d-flex justify-content-between test-mc-width rounded-2 p-2 small my-1 chat-shadow chat-green">
                 <div className=" chat-coming">{msg.text}</div>
                 <div className="d-flex col-1 justify-content-end align-self-end text-muted ps-5 mt-1 pt-0 time-fs">
                   {FormatDate(msg.createdAt)}
@@ -75,7 +86,14 @@ const Message = ({ msg, user }) => {
                             className="pdf"
                           />
                         </div>
-                        <div className="ms-2 small text-break">{msg.text}</div>
+                        <i
+                          className="position-absolute bottom-custom-download-receive p-1 small fa-solid fa-arrow-down  small text-muted"
+                          onClick={(e) => downloadMedia(e, msg.text)}
+                        ></i>
+
+                        <div className="ms-2 small text-break">
+                          {msg.text?.split("/").pop()}
+                        </div>
                       </div>
                       <div className="text-muted small pe-1 position-absolute end-0 bottom-0">
                         {FormatDate(msg.createdAt)}
@@ -91,6 +109,11 @@ const Message = ({ msg, user }) => {
                           alt="loading"
                           className="chat-image"
                         />
+                        <i
+                          className="position-absolute bottom-custom-download-receive p-1 small fa-solid fa-arrow-down  small text-muted"
+                          onClick={(e) => downloadMedia(e, msg.text)}
+                        ></i>
+
                         <div className="text-white pe-1 position-absolute end-0 bottom-0">
                           {FormatDate(msg.createdAt)}
                         </div>

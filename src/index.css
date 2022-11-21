@@ -211,3 +211,18 @@ li {
 .scrollBar {
   height: 78.5% !important;
 }
+
+.bottom-custom-download {
+  bottom: 1.6rem;
+  right: 0.6rem;
+
+  border: 1px solid;
+  border-radius: 50%;
+}
+.bottom-custom-download-receive {
+  bottom: 1.6rem;
+  right: 0.6rem;
+
+  border: 1px solid;
+  border-radius: 50%;
+}
