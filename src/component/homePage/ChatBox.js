@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   fileUpload,
   getConversation,
@@ -7,8 +7,10 @@ import {
 } from "../../Axios/api";
 import Message from "./Message";
 import { Scrollbars } from "react-custom-scrollbars-2";
+import { AccountContext } from "../../Context/AccountProvider";
 
 export default function ChatBox({ data, chatBox, user }) {
+  const { activeUsers } = useContext(AccountContext);
   let [text, setText] = useState("");
   let [conversation, setConversation] = useState({});
   const [message, setMessage] = useState([]);
@@ -55,7 +57,6 @@ export default function ChatBox({ data, chatBox, user }) {
     let data = await getMessages(conversation._id);
     setMessage(data);
   };
-  useEffect(() => {}, [message]);
   useEffect(() => {
     getMessagesDetails();
   }, [conversation, data, messageFlag]);
@@ -98,7 +99,9 @@ export default function ChatBox({ data, chatBox, user }) {
               <div className="d-flex flex-column ms-4 ">
                 <div className="fw-bold m-0">{data.name}</div>
                 <div className="text-success small text-nowrap overflow-hidden">
-                  typing...
+                  {activeUsers?.find((user) => user.sub === data.sub)
+                    ? "Online"
+                    : "Offline"}
                 </div>
               </div>
               <div className="position-absolute bg-light end-0 p-3 ">

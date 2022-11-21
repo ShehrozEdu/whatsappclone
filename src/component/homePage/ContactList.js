@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Scrollbars } from "react-custom-scrollbars-2";
 import { getUser } from "../../Axios/api";
-
+import { AccountContext } from "../../Context/AccountProvider";
 export default function ContactList({ openChatBox, user }) {
   let [list, setList] = useState([]);
   let [text, setText] = useState("");
+  const { activeUsers, setActiveUsers, socket } = useContext(AccountContext);
 
   let search = (event) => {
     let searchData = event.target.value;
@@ -27,6 +28,13 @@ export default function ContactList({ openChatBox, user }) {
   useEffect(() => {
     getList();
   }, [text]);
+
+  useEffect(() => {
+    socket.current?.emit("addUsers", user);
+    socket.current?.on("getUsers", (users) => {
+      setActiveUsers(users);
+    });
+  }, [user]);
 
   return (
     <>
