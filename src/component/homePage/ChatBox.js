@@ -114,7 +114,16 @@ export default function ChatBox({ data, chatBox, user }) {
             <Scrollbars className="scrollBar">
               <div className="pt-3 w-100">
                 {message.map((msg, index) => {
-                  return <Message msg={msg} user={user} key={index} />;
+                  return (
+                    <Message
+                      msg={msg}
+                      user={user}
+                      conversation={conversation}
+                      key={index}
+                      message={message}
+                      setMessage={setMessage}
+                    />
+                  );
                 })}
               </div>
             </Scrollbars>
