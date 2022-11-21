@@ -10,7 +10,9 @@ import { Scrollbars } from "react-custom-scrollbars-2";
 import { AccountContext } from "../../Context/AccountProvider";
 
 export default function ChatBox({ data, chatBox, user }) {
-  const { activeUsers } = useContext(AccountContext);
+  const [incomingMessage, setIncomingMessage] = useState(null);
+
+  const { socket, activeUsers } = useContext(AccountContext);
   let [text, setText] = useState("");
   let [conversation, setConversation] = useState({});
   const [message, setMessage] = useState([]);
@@ -24,6 +26,21 @@ export default function ChatBox({ data, chatBox, user }) {
     });
     setConversation(newData);
   };
+
+  useEffect(() => {
+    socket.current?.on("getMessage", (data) => {
+      setIncomingMessage({
+        ...data,
+        createdAt: Date.now(),
+      });
+    });
+  }, []);
+
+  useEffect(() => {
+    incomingMessage &&
+      conversation?.members?.includes(incomingMessage.senderId) &&
+      setMessage((prev) => [...prev, incomingMessage]);
+  }, [incomingMessage, conversation]);
 
   let sendText = async (event) => {
     let code = event.which;
@@ -46,6 +63,8 @@ export default function ChatBox({ data, chatBox, user }) {
           text: image,
         };
       }
+      socket.current.emit("sendMessage", message);
+
       await newMessage(message);
       setText("");
       setFile();

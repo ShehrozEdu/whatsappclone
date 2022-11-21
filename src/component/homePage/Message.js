@@ -3,20 +3,6 @@ import { AccountContext } from "../../Context/AccountProvider.js";
 import { downloadMedia, FormatDate } from "./../../utils/FormatDate";
 
 const Message = ({ msg, user, conversation, message, setMessage }) => {
-  const [incomingMessage, setIncomingMessage] = useState([]);
-  const { socket } = useContext(AccountContext);
-
-  useEffect(() => {
-    socket.current.on("getMessage", (data) => {
-      setIncomingMessage({ ...data, createdAt: Date.now() });
-    });
-  }, []);
-
-  useEffect(() => {
-    incomingMessage &&
-      conversation?.members?.includes(incomingMessage.senderId) &&
-      setMessage((prev) => [...prev, incomingMessage]);
-  }, [incomingMessage, conversation]);
   return (
     <>
       {/* sender message */}
