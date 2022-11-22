@@ -27,24 +27,6 @@ export default function ChatBox({ data, chatBox, user }) {
     setConversation(newData);
   };
 
-  useEffect(() => {
-    socket.current?.on("getMessage", (data) => {
-      setIncomingMessage({
-        ...data,
-        createdAt: Date.now(),
-      });
-    });
-  }, []);
-
-  useEffect(() => {
-    incomingMessage &&
-      conversation?.members?.includes(incomingMessage.senderId) &&
-      setMessage((prev) => [...prev, incomingMessage]);
-  }, [incomingMessage, conversation]);
-
-  // const receiverId = conversation?.members?.find(
-  //   (member) => member !== user.sub
-  // );
   let sendText = async (event) => {
     let code = event.which;
     if (code === 13) {
@@ -102,14 +84,27 @@ export default function ChatBox({ data, chatBox, user }) {
       setImage(response.data);
     }
   };
-
   useEffect(() => {
     getImage();
   }, [file]);
+
+  useEffect(() => {
+    socket.current?.on("getMessage", (data) => {
+      setIncomingMessage({
+        ...data,
+        createdAt: Date.now(),
+      });
+    });
+  }, []);
+  useEffect(() => {
+    incomingMessage &&
+      conversation?.members?.includes(incomingMessage.senderId) &&
+      setMessage((prev) => [...prev, incomingMessage]);
+  }, [incomingMessage, conversation]);
   return (
     <>
       {chatBox ? (
-        <div className="col-12 ">
+        <div className="col-12">
           <div className="d-flex align-items-center p-2">
             <div className="ms-3">
               <img

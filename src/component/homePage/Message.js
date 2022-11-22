@@ -1,5 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
-import { AccountContext } from "../../Context/AccountProvider.js";
+import React from "react";
 import { downloadMedia, FormatDate } from "./../../utils/FormatDate";
 
 const Message = ({ msg, user, conversation, message, setMessage }) => {

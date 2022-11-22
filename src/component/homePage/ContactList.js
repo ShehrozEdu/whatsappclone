@@ -35,7 +35,6 @@ export default function ContactList({ openChatBox, user }) {
       setActiveUsers(users);
     });
   }, [user]);
-
   return (
     <>
       <div className="p-2 border bg-light">
