@@ -42,6 +42,9 @@ export default function ChatBox({ data, chatBox, user }) {
       setMessage((prev) => [...prev, incomingMessage]);
   }, [incomingMessage, conversation]);
 
+  // const receiverId = conversation?.members?.find(
+  //   (member) => member !== user.sub
+  // );
   let sendText = async (event) => {
     let code = event.which;
     if (code === 13) {
@@ -63,6 +66,7 @@ export default function ChatBox({ data, chatBox, user }) {
           text: image,
         };
       }
+
       socket.current.emit("sendMessage", message);
 
       await newMessage(message);
@@ -73,15 +77,16 @@ export default function ChatBox({ data, chatBox, user }) {
     }
   };
   let getMessagesDetails = async () => {
-    let data = await getMessages(conversation._id);
+    let data = await getMessages(conversation?._id);
     setMessage(data);
   };
   useEffect(() => {
-    getMessagesDetails();
-  }, [conversation, data, messageFlag]);
-  useEffect(() => {
     getConversationDetails();
-  }, [data.sub, messageFlag]);
+  }, [data.sub]);
+
+  useEffect(() => {
+    getMessagesDetails();
+  }, [conversation?._id, data._id, messageFlag]);
 
   const getFile = (e) => {
     setFile(e.target.files[0]);
@@ -132,18 +137,19 @@ export default function ChatBox({ data, chatBox, user }) {
           <div className="chat-box-wallpaper w-100">
             <Scrollbars className="scrollBar">
               <div className="pt-3 w-100">
-                {message.map((msg, index) => {
-                  return (
-                    <Message
-                      msg={msg}
-                      user={user}
-                      conversation={conversation}
-                      key={index}
-                      message={message}
-                      setMessage={setMessage}
-                    />
-                  );
-                })}
+                {message &&
+                  message.map((msg, index) => {
+                    return (
+                      <Message
+                        msg={msg}
+                        user={user}
+                        conversation={conversation}
+                        key={index}
+                        message={message}
+                        setMessage={setMessage}
+                      />
+                    );
+                  })}
               </div>
             </Scrollbars>
             <div className="bg-light position-fixed justify-content-around p-2 d-flex align-items-center chat-bar">
