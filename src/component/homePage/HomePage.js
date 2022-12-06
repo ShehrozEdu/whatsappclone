@@ -1,34 +1,29 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ChatBox from "./ChatBox";
 import ContactList from "./ContactList";
 import jwt_decode from "jwt-decode";
 import { setConversation } from "../../Axios/api";
+import { AccountContext } from "../../Context/AccountProvider";
 
 export default function HomePage() {
-  let [user, setUser] = useState("");
   const [data, setData] = useState([]);
   let [chatBox, setChatBox] = useState(false);
+  const { account, setAccount } = useContext(AccountContext);
 
   const openChatBox = async (userList) => {
     setChatBox(true);
     setData(userList);
-    await setConversation({ senderId: user.sub, receiverId: userList.sub });
+    await setConversation({ senderId: account.sub, receiverId: userList.sub });
   };
-  useEffect(() => {
-    let userInfo = sessionStorage.getItem("auth");
-    if (userInfo) {
-      let decode = jwt_decode(userInfo);
-      setUser(decode);
-    }
-  }, []);
+
   return (
     <>
       <div className="d-flex overflow-hidden mainHomePage ">
         <div className="contact-list col-3">
-          <ContactList openChatBox={openChatBox} user={user} />
+          <ContactList openChatBox={openChatBox} account={account} />
         </div>
         <div className="border bg-light contact-list col-9">
-          <ChatBox data={data} chatBox={chatBox} user={user} />
+          <ChatBox data={data} chatBox={chatBox} account={account} />
         </div>
       </div>
     </>

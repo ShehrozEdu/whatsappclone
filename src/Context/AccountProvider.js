@@ -5,13 +5,16 @@ export const AccountContext = createContext(null);
 
 const AccountProvider = ({ children }) => {
   let [activeUsers, setActiveUsers] = useState([]);
+  let [account, setAccount] = useState();
   const socket = useRef();
 
   useEffect(() => {
     socket.current = io("ws://localhost:9000");
   }, []);
   return (
-    <AccountContext.Provider value={{ socket, setActiveUsers, activeUsers }}>
+    <AccountContext.Provider
+      value={{ socket, setActiveUsers, activeUsers, account, setAccount }}
+    >
       {children}
     </AccountContext.Provider>
   );

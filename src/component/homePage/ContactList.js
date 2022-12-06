@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Scrollbars } from "react-custom-scrollbars-2";
 import { getUser } from "../../Axios/api";
 import { AccountContext } from "../../Context/AccountProvider";
-export default function ContactList({ openChatBox, user }) {
+export default function ContactList({ openChatBox, account }) {
   let [list, setList] = useState([]);
   let [text, setText] = useState("");
   const { activeUsers, setActiveUsers, socket } = useContext(AccountContext);
@@ -30,18 +30,18 @@ export default function ContactList({ openChatBox, user }) {
   }, [text]);
 
   useEffect(() => {
-    socket.current?.emit("addUsers", user);
+    socket.current?.emit("addUser", account);
     socket.current?.on("getUsers", (users) => {
       setActiveUsers(users);
     });
-  }, [user]);
+  }, [account]);
   return (
     <>
       <div className="p-2 border bg-light">
         <div className="d-flex justify-content-between ">
           <div>
             <img
-              src={user.picture}
+              src={account.picture}
               alt=""
               className="dp cursor-pointer "
               type="button"
@@ -78,7 +78,7 @@ export default function ContactList({ openChatBox, user }) {
             <div className="bg-light  py-3 d-flex justify-content-center">
               <div>
                 <img
-                  src={user.picture}
+                  src={account.picture}
                   alt=""
                   className="profile-pic image-fluid"
                 />
@@ -88,7 +88,7 @@ export default function ContactList({ openChatBox, user }) {
               <div className="bg-white p-2 shadow">
                 <p className="text-success small  ms-3">Your Name</p>
                 <div className="d-flex justify-content-between align-items-center">
-                  <p className=" ms-3">{user.name}</p>
+                  <p className=" ms-3">{account.name}</p>
                   <i className="fa-solid fa-pen me-2 text-muted"></i>
                 </div>
               </div>
@@ -202,7 +202,7 @@ export default function ContactList({ openChatBox, user }) {
                       <button
                         type="button"
                         className="btn btn-success shadow-hover px-4"
-                        onClick={removeUser}
+                        // onClick={removeUser}
                       >
                         Logout
                       </button>
@@ -238,14 +238,14 @@ export default function ContactList({ openChatBox, user }) {
                       <div className="py-0 p-4 d-flex align-items-center ">
                         <div className="">
                           <img
-                            src={user.picture}
+                            src={account.picture}
                             alt=""
                             className="profile-pic-settings "
                           />
                         </div>
                         <div className=" d-flex ms-3 mt-2  flex-column">
                           <p className="m-0" style={{ fontWeight: "500" }}>
-                            {user.name}
+                            {account.name}
                           </p>
                           <p>Status</p>
                         </div>
@@ -319,7 +319,7 @@ export default function ContactList({ openChatBox, user }) {
             {list.map((userList, index) => {
               return (
                 <>
-                  {userList.sub !== user.sub && (
+                  {userList.sub !== account.sub && (
                     <li
                       key={index}
                       className="py-2 d-flex bg-white ps-3"

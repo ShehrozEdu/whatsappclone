@@ -1,8 +1,9 @@
-import React, { useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import { GoogleLogin } from "@react-oauth/google";
 import { addUser } from "../../Axios/api";
 import jwt_decode from "jwt-decode";
+import { AccountContext } from "../../Context/AccountProvider";
 export default function LoginModal() {
   const [play, setPlay] = useState(true);
   const ref = useRef(null);
@@ -11,6 +12,7 @@ export default function LoginModal() {
     ref.current.play();
   };
 
+  const { setAccount } = useContext(AccountContext);
   return (
     <>
       <GoogleOAuthProvider clientId="503786222553-dra9mrnlh03ehjr29rrkdraqtpld4e9m.apps.googleusercontent.com">
@@ -47,14 +49,10 @@ export default function LoginModal() {
                   />
                   <div>
                     <GoogleLogin
-                      onSuccess={(credentialResponse) => {
+                      onSuccess={async (credentialResponse) => {
                         let decode = jwt_decode(credentialResponse.credential);
-                        addUser(decode);
-                        sessionStorage.setItem(
-                          "auth",
-                          credentialResponse.credential
-                        );
-                        window.location.reload();
+                        await addUser(decode);
+                        setAccount(decode);
                       }}
                       onError={() => {
                         alert("Login Failed");

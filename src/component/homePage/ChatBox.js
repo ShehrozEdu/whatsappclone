@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import {
   fileUpload,
   getConversation,
@@ -9,23 +9,26 @@ import Message from "./Message";
 import { Scrollbars } from "react-custom-scrollbars-2";
 import { AccountContext } from "../../Context/AccountProvider";
 
-export default function ChatBox({ data, chatBox, user }) {
+export default function ChatBox({ data, chatBox, account }) {
   const [incomingMessage, setIncomingMessage] = useState(null);
 
   const { socket, activeUsers } = useContext(AccountContext);
   let [text, setText] = useState("");
-  let [conversation, setConversation] = useState({});
-  const [message, setMessage] = useState([]);
+  let [conversation1, setConversation1] = useState({});
+  const [message, setMessage] = useState({});
   const [messageFlag, setMessageFlag] = useState(false);
   const [file, setFile] = useState();
   const [image, setImage] = useState("");
   let getConversationDetails = async () => {
     let newData = await getConversation({
-      senderId: user.sub,
+      senderId: account.sub,
       receiverId: data.sub,
     });
-    setConversation(newData);
+    setConversation1(newData);
   };
+  const receiverId = conversation1?.members?.find(
+    (member) => member !== account.sub
+  );
 
   let sendText = async (event) => {
     let code = event.which;
@@ -33,17 +36,17 @@ export default function ChatBox({ data, chatBox, user }) {
       let message = {};
       if (!file) {
         message = {
-          senderId: user.sub,
-          receiverId: data.sub,
-          conversationId: conversation._id,
+          senderId: account.sub,
+          receiverId: receiverId,
+          conversationId: conversation1._id,
           type: "text",
           text: text,
         };
       } else {
         message = {
-          senderId: user.sub,
-          receiverId: data.sub,
-          conversationId: conversation._id,
+          senderId: account.sub,
+          conversationId: conversation1._id,
+          receiverId: receiverId,
           type: "file",
           text: image,
         };
@@ -59,7 +62,7 @@ export default function ChatBox({ data, chatBox, user }) {
     }
   };
   let getMessagesDetails = async () => {
-    let data = await getMessages(conversation?._id);
+    let data = await getMessages(conversation1?._id);
     setMessage(data);
   };
   useEffect(() => {
@@ -68,7 +71,7 @@ export default function ChatBox({ data, chatBox, user }) {
 
   useEffect(() => {
     getMessagesDetails();
-  }, [conversation?._id, data._id, messageFlag]);
+  }, [conversation1?._id, data._id, messageFlag]);
 
   const getFile = (e) => {
     setFile(e.target.files[0]);
@@ -96,11 +99,17 @@ export default function ChatBox({ data, chatBox, user }) {
       });
     });
   }, []);
+
   useEffect(() => {
     incomingMessage &&
-      conversation?.members?.includes(incomingMessage.senderId) &&
+      conversation1?.members?.includes(incomingMessage.senderId) &&
       setMessage((prev) => [...prev, incomingMessage]);
-  }, [incomingMessage, conversation]);
+  }, [incomingMessage, conversation1]);
+
+  const scrollRef = useRef();
+  useEffect(() => {
+    scrollRef.current?.scrollIntoView({ transition: "smooth" });
+  }, [message]);
   return (
     <>
       {chatBox ? (
@@ -108,7 +117,7 @@ export default function ChatBox({ data, chatBox, user }) {
           <div className="d-flex align-items-center p-2">
             <div className="ms-3">
               <img
-                src={data.picture}
+                src={data?.picture}
                 alt=""
                 className="dp cursor-pointer"
                 referrerPolicy="no-referrer"
@@ -129,16 +138,16 @@ export default function ChatBox({ data, chatBox, user }) {
               </div>
             </div>
           </div>
-          <div className="chat-box-wallpaper w-100">
+          <div className="chat-box-wallpaper w-100 ">
             <Scrollbars className="scrollBar">
-              <div className="pt-3 w-100">
+              <div className="pt-3 w-100 ">
                 {message &&
                   message.map((msg, index) => {
                     return (
                       <Message
                         msg={msg}
-                        user={user}
-                        conversation={conversation}
+                        account={account}
+                        conversation={conversation1}
                         key={index}
                         message={message}
                         setMessage={setMessage}
@@ -163,6 +172,7 @@ export default function ChatBox({ data, chatBox, user }) {
                   onChange={(e) => getFile(e)}
                 />
               </div>
+
               <div className="w-75">
                 <abbr title="Type a message" className="text-decoration-none">
                   <input

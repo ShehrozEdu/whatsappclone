@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { downloadMedia, FormatDate } from "./../../utils/FormatDate";
 
-const Message = ({ msg, user, conversation, message, setMessage }) => {
+const Message = ({ msg, account, conversation, ref, message, setMessage }) => {
+  const scrollRef = useRef();
+  useEffect(() => {
+    scrollRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [message]);
   return (
     <>
       {/* sender message */}
       <div className="mx-5">
-        {user.sub === msg.senderId ? (
+        {account.sub === msg.senderId ? (
           <section className="d-flex justify-content-end ">
             {msg.type === "file" ? (
               <>
@@ -72,7 +76,7 @@ const Message = ({ msg, user, conversation, message, setMessage }) => {
                   <>
                     <div
                       className={
-                        user.sub !== msg.senderId
+                        account.sub !== msg.senderId
                           ? " d-flex chat-pdf-sec rounded-2 position-relative p-2 small my-1 chat-shadow border bg-light"
                           : null
                       }

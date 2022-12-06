@@ -18,6 +18,9 @@ ul {
 li {
   cursor: pointer;
 }
+.componentHeight {
+  height: 90vh !important;
+}
 /*==> theme colors <==  */
 
 .theme-green {
