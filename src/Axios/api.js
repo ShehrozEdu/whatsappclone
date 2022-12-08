@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const URL = "http://localhost:4000/api";
+const URL = "https://whatsappcloneserver.vercel.app/api";
 
 export const addUser = async (data) => {
   try {

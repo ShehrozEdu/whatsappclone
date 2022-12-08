@@ -138,7 +138,7 @@ export default function ChatBox({ data, chatBox, account }) {
               </div>
             </div>
           </div>
-          <div className="chat-box-wallpaper w-100 ">
+          <div className="chat-box-wallpaper w-100">
             <Scrollbars className="scrollBar">
               <div className="pt-3 w-100 ">
                 {message &&
