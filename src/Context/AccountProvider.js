@@ -9,7 +9,7 @@ const AccountProvider = ({ children }) => {
   const socket = useRef();
 
   useEffect(() => {
-    socket.current = io("ws://localhost:9000");
+    socket.current = io("https://socket-io-whatsapp-n4qem3r8l-shehrozedu.vercel.app/");
   }, []);
   return (
     <AccountContext.Provider
