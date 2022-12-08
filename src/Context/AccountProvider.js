@@ -9,7 +9,7 @@ const AccountProvider = ({ children }) => {
   const socket = useRef();
 
   useEffect(() => {
-    socket.current = io("https://socket-io-whatsapp-n4qem3r8l-shehrozedu.vercel.app/");
+    socket.current = io("https://whatsappcloneserver.vercel.app"); //test
   }, []);
   return (
     <AccountContext.Provider
@@ -19,5 +19,6 @@ const AccountProvider = ({ children }) => {
     </AccountContext.Provider>
   );
 };
+//test
 //test
 export default AccountProvider;
