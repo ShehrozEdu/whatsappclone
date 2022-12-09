@@ -13,7 +13,7 @@ export default function ContactList({ openChatBox, account }) {
   };
 
   let removeUser = () => {
-    window.location.reload();
+    window.location.reload(); //deploy
   };
 
   const getList = async () => {
