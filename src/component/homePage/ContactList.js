@@ -13,7 +13,6 @@ export default function ContactList({ openChatBox, account }) {
   };
 
   let removeUser = () => {
-    sessionStorage.removeItem("auth");
     window.location.reload();
   };
 
@@ -202,7 +201,7 @@ export default function ContactList({ openChatBox, account }) {
                       <button
                         type="button"
                         className="btn btn-success shadow-hover px-4"
-                        // onClick={removeUser}
+                        onClick={removeUser}
                       >
                         Logout
                       </button>
